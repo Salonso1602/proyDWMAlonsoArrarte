@@ -8,6 +8,23 @@ hr{
     background-color: var(--mainColor);
     opacity: 100;
 }
+h1{
+    color: black;
+}
+
+button{
+    color: var(--txtOnMainColor) !important;
+}
+
+.dropdown-menu{
+    translate: -90%;
+    top: 0;
+
+    background-color: var(--mainColor);
+}
+.dropdown-item{
+    color: var(--txtOnMainColor);
+}
 
 #dropleft1{
     background-color: var(--mainColor);
