@@ -16,6 +16,10 @@ button{
     color: var(--txtOnMainColor) !important;
 }
 
+svg{
+    vertical-align: text-top;
+}
+
 .dropdown-menu{
     translate: -90%;
     top: 0;
@@ -26,6 +30,7 @@ button{
     color: var(--txtOnMainColor);
     font-size: x-large;
 }
+
 
 #dropleft1{
     background-color: var(--mainColor);
