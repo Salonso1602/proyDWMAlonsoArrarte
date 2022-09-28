@@ -2,3 +2,12 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+:root{
+    --mainColor: rgb(170, 36, 3);
+    --txtOnMainColor: whitesmoke;
+}
+
+*{
+    font-family:roboto;
+}
