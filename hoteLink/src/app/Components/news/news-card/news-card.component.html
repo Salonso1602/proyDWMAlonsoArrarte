@@ -1,0 +1,8 @@
+<div class="row">
+  <div *ngFor="let news of latestNews" class="col-lg-4">
+    <div>
+      <app-image [imageId]="news.imageId" [alt]="news.caption"></app-image>
+      <p>{{ news.caption }}</p>
+    </div>
+  </div>
+</div>
