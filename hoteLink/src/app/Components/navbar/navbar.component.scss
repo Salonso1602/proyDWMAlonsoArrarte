@@ -4,8 +4,7 @@
 
 hr{
     height: 5pt;
-    width: 70%;
-    background-color: var(--mainColor);
+    background-image: linear-gradient(to right, var(--mainColor) 70%, white);
     opacity: 100;
 }
 h1{
@@ -18,6 +17,9 @@ button{
 
 svg{
     vertical-align: text-top;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
 }
 
 .dropdown-menu{
