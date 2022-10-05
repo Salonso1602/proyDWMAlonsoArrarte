@@ -11,6 +11,7 @@ import { NewsCardComponent } from './Components/news/news-card/news-card.compone
 import { FooterComponent } from './Components/footer/footer.component';
 import { ModalSendRequestComponent } from './Components/modals/modal-send-request/modal-send-request.component';
 import { ModalToggleButtonComponent } from '@components/modals/modal-toggle-button/modal-toggle-button.component';
+import { SearchAndFilterComponent } from './Components/search-and-filter/search-and-filter.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ModalToggleButtonComponent } from '@components/modals/modal-toggle-butt
     FooterComponent,
     ModalToggleButtonComponent,
     ModalBaseComponent,
-    ModalSendRequestComponent
+    ModalSendRequestComponent,
+    SearchAndFilterComponent
   ],
   imports: [
     BrowserModule,
