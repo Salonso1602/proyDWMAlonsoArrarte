@@ -1,3 +1,5 @@
 export enum Modals {
-    CrearModificarNota = 'CrearModificarNota',
+    login = "login",
+    filtersByCategory = "filtersByCategory",
+    sendRequest = "sendRequest"
 }
