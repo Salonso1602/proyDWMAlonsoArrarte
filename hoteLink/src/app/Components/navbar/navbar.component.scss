@@ -2,7 +2,7 @@
     padding: 1em;
 }
 
-a:hover{
+a.dropdown-item:hover{
     background-color: var(--inverseMainColor);
     filter: invert(0);
 }
