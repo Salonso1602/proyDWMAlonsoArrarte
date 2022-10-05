@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ModalBaseComponent } from '@components/modals/modal-base/modal-base.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageComponent } from './Components/image/image.component';
 import { NewsCardComponent } from './Components/news/news-card/news-card.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { ModalSendRequestComponent } from './Components/modals/modal-send-request/modal-send-request.component';
+import { ModalToggleButtonComponent } from '@components/modals/modal-toggle-button/modal-toggle-button.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +19,15 @@ import { FooterComponent } from './Components/footer/footer.component';
     ImageComponent,
     NewsCardComponent,
     FooterComponent,
-    ModalBaseComponent
+    ModalToggleButtonComponent,
+    ModalBaseComponent,
+    ModalSendRequestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
