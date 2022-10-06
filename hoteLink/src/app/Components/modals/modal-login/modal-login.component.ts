@@ -9,6 +9,7 @@ import { Modals } from '../modals';
 })
 export class ModalLoginComponent implements OnInit {
   modalId = Modals.login;
+  showPassword = false;
   profileForm = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required]
@@ -23,4 +24,7 @@ export class ModalLoginComponent implements OnInit {
     alert(this.profileForm.value.email + ' ' + this.profileForm.value.password)
   }
 
+  togglePasswordView(){
+    this.showPassword = !this.showPassword;
+  }
 }
