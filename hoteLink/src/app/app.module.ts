@@ -12,6 +12,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { ModalSendRequestComponent } from './Components/modals/modal-send-request/modal-send-request.component';
 import { ModalToggleButtonComponent } from '@components/modals/modal-toggle-button/modal-toggle-button.component';
 import { SearchAndFilterComponent } from './Components/search-and-filter/search-and-filter.component';
+import { ModalLoginComponent } from './Components/modals/modal-login/modal-login.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SearchAndFilterComponent } from './Components/search-and-filter/search-
     ModalToggleButtonComponent,
     ModalBaseComponent,
     ModalSendRequestComponent,
-    SearchAndFilterComponent
+    SearchAndFilterComponent,
+    ModalLoginComponent
   ],
   imports: [
     BrowserModule,
