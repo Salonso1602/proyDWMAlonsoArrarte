@@ -2,7 +2,7 @@
     padding: 1em;
 }
 
-a.dropdown-item:hover{
+.dropdown-item:hover{
     background-color: var(--inverseMainColor);
     filter: invert(0);
 }
@@ -27,12 +27,17 @@ svg{
     fill: var(--txtOnMainColor);
 }
 
+span{
+    color: var(--txtOnMainColor);
+    font-size: x-large;
+}
+
 .dropdown-menu{
     translate: -90%;
     top: 0;
-
     background-color: var(--mainColor);
 }
+
 .dropdown-item{
     color: var(--txtOnMainColor);
     font-size: x-large;
