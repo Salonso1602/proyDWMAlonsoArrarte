@@ -21,6 +21,7 @@ export class ModalSendRequestComponent implements OnInit {
     if(this.suggestion.value===''){
       alert("Por favor ingrese su sugerencia o reclamo en el espacio.")
     } else{
+      this.suggestion.reset()
     /*
     PLACEHOLDER PARA SERVICIO DE POST
     */
