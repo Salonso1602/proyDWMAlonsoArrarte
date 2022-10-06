@@ -24,7 +24,7 @@ svg{
     vertical-align: text-top;
     width: 1em;
     height: 1em;
-    fill: currentColor;
+    fill: var(--txtOnMainColor);
 }
 
 .dropdown-menu{
@@ -37,7 +37,6 @@ svg{
     color: var(--txtOnMainColor);
     font-size: x-large;
 }
-
 
 #dropleft1{
     background-color: var(--mainColor);
