@@ -3,8 +3,8 @@
 }
 
 .dropdown-item:hover{
-    background-color: var(--inverseMainColor);
-    filter: invert(0);
+    background-color: var(--inverseMainColor) !important;
+    filter: invert(0) !important;
 }
 
 hr{
