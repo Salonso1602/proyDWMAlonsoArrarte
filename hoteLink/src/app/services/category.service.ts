@@ -24,6 +24,17 @@ export class CategoryService {
       }))
     return foodcategories;
   }
+
+  getActivityCategories() : ICategory[]{
+    let actcategories: ICategory[] = [];
+    this.getCategories().subscribe(categories =>
+      categories.forEach(category => {
+        if (category.type === categoryTypes.Activity) {
+          actcategories.push(category);
+        }
+      }));
+    return actcategories;
+  }
 }
 
 const allCategories : ICategory[] = [
