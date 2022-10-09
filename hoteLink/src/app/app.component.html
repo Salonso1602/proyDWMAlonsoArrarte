@@ -1,7 +1,9 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <router-outlet></router-outlet>
+  <app-modal-toggle-button [modalId]="modals.filtersByCategory">aaa</app-modal-toggle-button>
+  <app-modal-toggle-button [modalId]="modals.login">bbb</app-modal-toggle-button>
 </div>
 <app-footer></app-footer>
 
 <app-modal-login></app-modal-login>
+<app-modal-filters></app-modal-filters>
