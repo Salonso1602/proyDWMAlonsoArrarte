@@ -12,14 +12,12 @@ import { ICategory } from '@interfaces/category';
 export class ModalFiltersComponent implements OnInit {
   modalId : Modals = Modals.filtersByCategory;
   filters : ICategory[] = [];
-  filterType : categoryTypes = categoryTypes.Food;
+  @Input() filterType : categoryTypes = categoryTypes.Food;
 
   constructor(private filterService : CategoryService) { }
 
   ngOnInit(): void {
-    this.filterService.getCategories().subscribe(category => {
-      this.filters = category;
-    });
+    this.getFilters();
   }
 
   getFilters(){

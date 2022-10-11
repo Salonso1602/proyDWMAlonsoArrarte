@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Modals } from '@components/modals/modals';
+import { categoryTypes } from '@enums/categoryTypes';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,5 @@ import { Modals } from '@components/modals/modals';
 export class AppComponent {
   title = 'hoteLink';
   modals = Modals;
+  categories = categoryTypes;
 }
