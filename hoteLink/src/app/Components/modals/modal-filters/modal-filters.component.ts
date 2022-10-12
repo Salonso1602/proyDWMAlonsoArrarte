@@ -13,6 +13,7 @@ export class ModalFiltersComponent implements OnInit {
   modalId : Modals = Modals.filtersByCategory;
   filters : ICategory[] = [];
   @Input() filterType : categoryTypes = categoryTypes.Food;
+  selectedFilters : ICategory[] = [];
 
   constructor(private filterService : CategoryService) { }
 
@@ -29,5 +30,14 @@ export class ModalFiltersComponent implements OnInit {
         this.filters = this.filterService.getActivityCategories();
         break;
     }
+  }
+
+  filterToggle(filter : ICategory){
+    if (this.selectedFilters.includes(filter)){
+      this.selectedFilters.splice(this.selectedFilters.indexOf(filter),1);
+    } else {
+      this.selectedFilters.push(filter);
+    }
+    console.log(this.selectedFilters);
   }
 }

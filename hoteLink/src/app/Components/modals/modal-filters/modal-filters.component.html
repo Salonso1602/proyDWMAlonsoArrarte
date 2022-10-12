@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-5" *ngFor="let filter of this.filters">
                 <div class="container category">
-                    <input type="checkbox" class="form-check-input" [id]="filter.name" />
+                    <input type="checkbox" class="form-check-input" [id]="filter.name" (change)="filterToggle(filter)"/>
                     <label [for]="filter.name" id="filterContent">
                         <app-image [imageId]="filter.imageId" [id]="filter.name" class="filterImage"></app-image>
                         <label [for]="filter.name">{{filter.name}}</label>
