@@ -38,6 +38,6 @@ export class ModalFiltersComponent implements OnInit {
     } else {
       this.selectedFilters.push(filter);
     }
-    console.log(this.selectedFilters);
+    //console.log(this.selectedFilters);
   }
 }
