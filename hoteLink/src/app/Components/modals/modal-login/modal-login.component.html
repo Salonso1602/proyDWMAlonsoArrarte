@@ -1,5 +1,6 @@
 <app-modal-base [title]="'Iniciar Sesión'" [id]="this.modalId">
     <div class="modal-body">
+        <span style="color: red;" *ngIf="triedLogin === true">Email o Contraseña Errónea</span>
         <form [formGroup]="profileForm">
         <input id="email" type="text" formControlName="email"
         placeholder="Dirección de Correo Electrónico" >
