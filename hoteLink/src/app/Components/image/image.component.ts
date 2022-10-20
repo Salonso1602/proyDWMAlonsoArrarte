@@ -10,6 +10,7 @@ import { MediaService } from '@services/media.service';
 export class ImageComponent implements OnInit {
   @Input() imageId: string = '0001';
   @Input() alt = '';
+  @Input() css = {};
 
   image?: IImage;
 
