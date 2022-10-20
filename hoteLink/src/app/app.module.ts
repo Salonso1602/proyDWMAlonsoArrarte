@@ -15,6 +15,10 @@ import { SearchAndFilterComponent } from './Components/search-and-filter/search-
 import { ModalLoginComponent } from './Components/modals/modal-login/modal-login.component';
 import { ModalFiltersComponent } from './Components/modals/modal-filters/modal-filters.component';
 import { NewsDetailsComponent } from './Components/news/news-details/news-details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from '@services/in-memory-data.service';
+import { NewsListComponent } from './Components/news/news-list/news-list.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +33,16 @@ import { NewsDetailsComponent } from './Components/news/news-details/news-detail
     SearchAndFilterComponent,
     ModalLoginComponent,
     ModalFiltersComponent,
-    NewsDetailsComponent
+    NewsDetailsComponent,
+    NewsListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
   ],
   providers: [],
   bootstrap: [AppComponent]
