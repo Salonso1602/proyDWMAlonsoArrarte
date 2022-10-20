@@ -1,8 +1,14 @@
-<div class="row">
-  <div *ngFor="let news of latestNews" class="col-lg-4">
-    <div>
-      <app-image [imageId]="news.imageId" [alt]="news.caption"></app-image>
-      <p>{{ news.caption }}</p>
-    </div>
-  </div>
+<div
+  class="card"
+  [ngClass]="{
+    'card--activity': isActivityNews(news.subject),
+    'card--dish': isDishNews(news.subject),
+    'card--event': isEventNews(news.subject)
+  }">
+  <app-image
+    [imageId]="news.imageId"
+    [alt]="news.caption"
+    [css]="{ 'border-radius': '15px' }">
+  </app-image>
+  <p>{{ news.caption }}</p>
 </div>

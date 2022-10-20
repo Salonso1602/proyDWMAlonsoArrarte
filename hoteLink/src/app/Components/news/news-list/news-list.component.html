@@ -1,0 +1,7 @@
+<div class="row">
+  <div *ngFor="let news of news$ | async" class="col-md-3">
+    <div class="news-container">
+      <app-news-card [news]="news"></app-news-card>
+    </div>
+  </div>
+</div>

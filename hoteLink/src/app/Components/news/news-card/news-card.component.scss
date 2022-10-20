@@ -1,0 +1,26 @@
+app-image {
+  display: block;  
+}
+
+.card {
+  padding: .5rem;
+  border-radius: 15px;
+  box-shadow: .2rem .3rem .5rem rgba(black, .7);
+
+  &--activity {
+    background-color: rgb(42, 173, 42);
+  }
+
+  &--event {
+    background-color: rgb(30, 226, 226);
+  }
+
+  &--dish {
+    background-color: rgb(211, 108, 23);
+  }
+}
+
+p {
+  margin: 0;
+  line-height: 200%;
+}
