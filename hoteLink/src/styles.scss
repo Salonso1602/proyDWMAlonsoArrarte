@@ -3,15 +3,34 @@
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto/Roboto-Regular.ttf')
+}
+
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url('./assets/fonts/Roboto/Roboto-Light.ttf')
+}
+
 :root{
     --mainColor: rgb(146, 31, 2);
     --inverseMainColor: rgb(63, 13, 0);
     --txtOnMainColor: whitesmoke;
+
+    --activityColor: rgb(42, 173, 42);
+    --eventColor: rgb(30, 226, 226);
+    --dishColor: rgb(211, 108, 23);
 }
 
 *{
-    font-family:roboto;
+    font-family: 'Roboto';
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
+}
+
+h1 {
+    font-family: 'Roboto-Light';
+    font-style: italic;
 }
