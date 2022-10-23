@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+
 import { ModalBaseComponent } from '@components/modals/modal-base/modal-base.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +18,7 @@ import { SearchAndFilterComponent } from './Components/search-and-filter/search-
 import { ModalLoginComponent } from './Components/modals/modal-login/modal-login.component';
 import { ModalFiltersComponent } from './Components/modals/modal-filters/modal-filters.component';
 import { NewsDetailsComponent } from './Components/news/news-details/news-details.component';
+import { InMemoryDataService } from '@services/in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,9 @@ import { NewsDetailsComponent } from './Components/news/news-details/news-detail
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [],
   bootstrap: [AppComponent]
