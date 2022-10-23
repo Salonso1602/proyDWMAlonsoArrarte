@@ -14,7 +14,7 @@ const news: INews[] = [
     serviceTime: 15
   },
   {
-    id: 1,
+    id: 2,
     name: 'Clases de equitación: Nivel principiante',
     caption: '¡Toca para reservar tu lugar ya!',
     imageId: '0001',
@@ -28,7 +28,7 @@ const news: INews[] = [
     }]
   },
   {
-    id: 2,
+    id: 3,
     name: 'Clases de equitación: Nivel intermedio',
     caption: '¡Toca para reservar tu lugar ya!',
     imageId: '0001',
