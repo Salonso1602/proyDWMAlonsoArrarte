@@ -1,0 +1,18 @@
+<app-modal-base [title]="'Filtros Disponibles'" [id]="this.modalId">
+    <div class="modal-body">
+        <div class="row align-items-center">
+            <div class="col-5" *ngFor="let filter of this.filters">
+                <div class="container category">
+                    <input type="checkbox" class="form-check-input" [id]="filter.name" (change)="filterToggle(filter)"/>
+                    <label [for]="filter.name" id="filterContent">
+                        <app-image [imageId]="filter.imageId" [id]="filter.name" class="filterImage"></app-image>
+                        <label [for]="filter.name">{{filter.name}}</label>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </div>
+</app-modal-base>

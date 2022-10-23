@@ -1,0 +1,7 @@
+<div class="container" *ngIf="card">
+    <h2>{{card.subject.name}}</h2>
+    <app-image [imageId]="card.imageId"></app-image>
+    <p>{{card.caption}}</p>
+
+    <div class="container"></div>
+</div>

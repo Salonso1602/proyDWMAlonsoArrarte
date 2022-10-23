@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Modals } from '@components/modals/modals';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   @Input() hotelName? : string;
+  modals = Modals;
   
   constructor() { }
 

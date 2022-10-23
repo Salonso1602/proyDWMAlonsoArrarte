@@ -1,19 +1,34 @@
+.navbar {
+    background-color: white;
+    box-shadow: 0 .5rem 2rem rgba(black, .4);
+}
+
+a.navbar-brand {
+    font-size: 2rem;
+    font-weight: 1000;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+        color: black;
+    }
+}
+
 .header{
     padding: 1em;
 }
 
-a.dropdown-item:hover{
-    background-color: var(--inverseMainColor);
-    filter: invert(0);
+.dropdown-item:hover{
+    background-color: var(--inverseMainColor) !important;
+    filter: invert(0) !important;
 }
 
 hr{
     height: 5pt;
     background-image: linear-gradient(to right, var(--mainColor) 70%, white);
     opacity: 100;
-}
-h1{
-    color: black;
+    width: 120%;
+    border: none;
 }
 
 button{
@@ -24,21 +39,37 @@ svg{
     vertical-align: text-top;
     width: 1em;
     height: 1em;
-    fill: currentColor;
+    fill: var(--txtOnMainColor);
+}
+
+span{
+    color: var(--txtOnMainColor);
+    font-size: x-large;
 }
 
 .dropdown-menu{
-    translate: -90%;
+    translate: -100%;
     top: 0;
-
     background-color: var(--mainColor);
 }
+
 .dropdown-item{
     color: var(--txtOnMainColor);
     font-size: x-large;
 }
 
-
-#dropleft1{
+.dropdown-toggle {
     background-color: var(--mainColor);
+
+    &:hover {
+        background-color: var(--mainColorDark);
+    }
+}
+
+.dropleft .dropdown-toggle::before {
+    transition: all .5s ease-in-out;
+}
+
+.dropleft.show .dropdown-toggle::before {
+    transform: rotate(180deg);
 }
