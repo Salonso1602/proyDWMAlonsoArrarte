@@ -3,6 +3,8 @@ import { IBookable } from '@interfaces/bookable';
 import { IActivity } from '@interfaces/activity';
 import { IEvent } from '@interfaces/event';
 import { INews } from '@interfaces/news';
+import { Router } from '@angular/router';
+import { NewsService } from '@services/news.service';
 
 @Component({
   selector: 'app-news-details',
@@ -11,14 +13,31 @@ import { INews } from '@interfaces/news';
 })
 export class NewsDetailsComponent implements OnInit {
 
-  @Input() card! : INews;
-  eventCard? : IEvent;
-  activityCard? : IActivity;
+  cardId?: number;
+  card?: INews;
 
-  constructor() { }
+  eventCard?: IEvent;
+  activityCard?: IActivity;
 
-  ngOnInit(): void {
-
+  constructor(private route: Router, private newsService: NewsService) {
   }
 
+  ngOnInit(): void {
+    this.getCard();
+  }
+
+  getCard() {
+    const currentURL = this.route.url.split('/');
+    this.cardId = parseInt(currentURL[currentURL.indexOf('newsDetails') + 1]);
+
+    this.newsService.getNews().subscribe(newCards => {
+      newCards.forEach(element => {
+        if (element.id === this.cardId) {
+          this.card = element;
+          return;
+        }
+      });
+    }
+    )
+  }
 }
