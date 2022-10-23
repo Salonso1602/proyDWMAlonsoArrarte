@@ -5,7 +5,7 @@
 
     <div class="container-flex">
         <app-modal-toggle-button modalId="sendRequest">Enviar Consulta</app-modal-toggle-button>
-        <button class ="btn btn-primary">Ir a reservar</button>
+        <button class ="btn btn-primary btn-lg"  *ngIf="isActivity()">Reservar</button>
     </div>
 </div>
 

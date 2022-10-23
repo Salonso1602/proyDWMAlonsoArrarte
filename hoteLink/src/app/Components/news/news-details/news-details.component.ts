@@ -16,9 +16,6 @@ export class NewsDetailsComponent implements OnInit {
   cardId?: number;
   card?: INews;
 
-  eventCard?: IEvent;
-  activityCard?: IActivity;
-
   constructor(private route: Router, private newsService: NewsService) {
   }
 
@@ -39,5 +36,9 @@ export class NewsDetailsComponent implements OnInit {
       });
     }
     )
+  }
+
+  isActivity(){
+      return 'timesOfActivity' in this.card!;
   }
 }
