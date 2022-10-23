@@ -19,6 +19,7 @@ import { ModalLoginComponent } from './Components/modals/modal-login/modal-login
 import { ModalFiltersComponent } from './Components/modals/modal-filters/modal-filters.component';
 import { NewsDetailsComponent } from './Components/news/news-details/news-details.component';
 import { InMemoryDataService } from '@services/in-memory-data.service';
+import { NewsListComponent } from './Components/news/news-list/news-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { InMemoryDataService } from '@services/in-memory-data.service';
     SearchAndFilterComponent,
     ModalLoginComponent,
     ModalFiltersComponent,
-    NewsDetailsComponent
+    NewsDetailsComponent,
+    NewsListComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import { InMemoryDataService } from '@services/in-memory-data.service';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
   ],
   providers: [],
   bootstrap: [AppComponent]

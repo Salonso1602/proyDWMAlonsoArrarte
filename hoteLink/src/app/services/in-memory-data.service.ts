@@ -1,27 +1,19 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
 import { Observable } from 'rxjs';
+import { news } from './in-memory-data-sources/news';
+import { images } from './in-memory-data-sources/images';
+import { registeredUsers } from './in-memory-data-sources/users';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InMemoryDataService implements InMemoryDbService{
-
-  createDb(){
+export class InMemoryDataService extends InMemoryDbService {
+  createDb() {
     return {
-      registeredUsers : [
-        {
-          email: "mesipelado@gmail.com", 
-          password: "vamomesi"
-        },
-        {
-          email: "prueba@gmail.com", 
-          password: "test"
-        },
-      ],
-      
-    }
+      news,
+      images,
+      registeredUsers
+    };
   }
-
-  constructor() { }
 }

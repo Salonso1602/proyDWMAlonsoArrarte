@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IActivity } from '@interfaces/activity';
+import { IDish } from '@interfaces/dish';
+import { IEvent } from '@interfaces/event';
 import { INews } from '@interfaces/news';
 import { NewsService } from '@services/news.service';
 
@@ -8,16 +11,24 @@ import { NewsService } from '@services/news.service';
   styleUrls: ['./news-card.component.scss']
 })
 export class NewsCardComponent implements OnInit {
-  latestNews?: INews[]; 
+  @Input() news!: INews;
 
   constructor(
     private _newsService: NewsService
   ) { }
 
   ngOnInit(): void {
-    this._newsService.getNews().subscribe(data => {
-      this.latestNews = data;
-    })
   }
 
+  isActivityNews(subject: IActivity | IDish | IEvent): subject is IActivity {
+    return (subject as IActivity).timesOfActivity !== undefined;
+  }
+  
+  isDishNews(subject: IActivity | IDish | IEvent): subject is IDish {
+    return (subject as IDish).serviceTime !== undefined;
+  }
+
+  isEventNews(subject: IActivity | IDish | IEvent): subject is IEvent {
+    return (subject as IEvent).entranceFee !== undefined;
+  }
 }

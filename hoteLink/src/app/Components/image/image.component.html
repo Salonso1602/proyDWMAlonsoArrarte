@@ -1,4 +1,7 @@
 <picture>
-  <source srcset="{{ image?.path }}">
-  <img src="https://static.thenounproject.com/png/3237447-200.png" alt="{{ alt }}">
+  <source srcset="{{ (image | async)?.path }}">
+  <img
+    src="https://static.thenounproject.com/png/3237447-200.png"
+    alt="{{ alt }}"
+    [style]="css">
 </picture>
