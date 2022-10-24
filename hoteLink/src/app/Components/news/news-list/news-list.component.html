@@ -4,7 +4,9 @@
   </div>
   <div *ngFor="let news of news$ | async" class="col-md-3">
     <div class="news-container">
+      <a [routerLink]="['/', news.type, news.subject.id, 'details']">
       <app-news-card [news]="news"></app-news-card>
+    </a>
     </div>
   </div>
 </div>

@@ -9,17 +9,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./image.component.scss']
 })
 export class ImageComponent implements OnInit {
-  @Input() imageId: string = '0001';
+  @Input() imageId!: string;
   @Input() alt = '';
   @Input() css = {};
 
-  image: Observable<IImage>;
+  image?: Observable<IImage>;
 
   constructor(
     private _mediaService: MediaService
   ) {
-    this.image = this._mediaService.getImageById(this.imageId);
+    
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.image = this._mediaService.getImageById(this.imageId);
+  }
 }
