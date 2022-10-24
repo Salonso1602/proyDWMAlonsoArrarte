@@ -17,7 +17,7 @@ import { ModalToggleButtonComponent } from '@components/modals/modal-toggle-butt
 import { SearchAndFilterComponent } from './Components/search-and-filter/search-and-filter.component';
 import { ModalLoginComponent } from './Components/modals/modal-login/modal-login.component';
 import { ModalFiltersComponent } from './Components/modals/modal-filters/modal-filters.component';
-import { NewsDetailsComponent } from './Components/news/news-details/news-details.component';
+import { BookableDetailsComponent } from './Components/news/bookable-details/bookable-details.component';
 import { InMemoryDataService } from '@services/in-memory-data.service';
 import { NewsListComponent } from './Components/news/news-list/news-list.component';
 
@@ -34,7 +34,7 @@ import { NewsListComponent } from './Components/news/news-list/news-list.compone
     SearchAndFilterComponent,
     ModalLoginComponent,
     ModalFiltersComponent,
-    NewsDetailsComponent,
+    BookableDetailsComponent,
     NewsListComponent
   ],
   imports: [
