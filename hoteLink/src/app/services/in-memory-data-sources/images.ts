@@ -22,6 +22,22 @@ export const images: IImage[] = [
   {
     id: '0005',
     path: `foods/cake.jpg`
+  },
+  {
+    id: '0006',
+    path: 'foods/gramajont.jpg'
+  },
+  {
+    id: '0007',
+    path: 'activities/horse_riding.jpg'
+  },
+  {
+    id: '0008',
+    path: 'activities/rock.jpg'
+  },
+  {
+    id: '0009',
+    path: 'activities/horse2.png'
   }
 ].map(image => {
   return {
