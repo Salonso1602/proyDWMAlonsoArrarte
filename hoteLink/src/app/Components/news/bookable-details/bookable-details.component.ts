@@ -16,6 +16,7 @@ export class BookableDetailsComponent implements OnInit {
 
   cardId?: number;
   cardType?: newsTypes;
+  types = newsTypes;
   card?: INews;
 
   constructor(private route: Router, private newsService: NewsService) {
