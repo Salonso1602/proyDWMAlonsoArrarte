@@ -49,8 +49,4 @@ export class BookableDetailsComponent implements OnInit {
     }
     )
   }
-
-  isActivity(){
-      return 'timesOfActivity' in this.card!;
-  }
 }
