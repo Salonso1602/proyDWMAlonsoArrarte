@@ -1,0 +1,14 @@
+<div class="container" *ngIf="card" 
+[ngStyle]="{'border-color': (cardType === types.Activity) ?
+ 'var(--activityColor)' : 'var(--eventColor)'}">
+    <h2>{{card.subject.name}}</h2>
+    <app-image [imageId]="card.imageId"></app-image>
+    <p>{{card.caption}}</p>
+
+    <div class="container-flex">
+        <app-modal-toggle-button modalId="sendRequest">Enviar Consulta</app-modal-toggle-button>
+        <button class ="btn btn-primary btn-lg"  *ngIf="this.cardType === types.Activity">Reservar</button>
+    </div>
+</div>
+
+<app-modal-send-request></app-modal-send-request>

@@ -1,8 +1,9 @@
-<app-modal-base [title]="'Escriba su sugerencia o reclamo'" [id]="modalId">
+<app-modal-base [title]="'Escriba su sugerencia o reclamo'" [id]="modalId" #modal>
     <div class='modal-body'>
-        <textarea name="message" id="" cols="30" rows="10" [formControl]="suggestion"></textarea>
+        <textarea name="message" [formControl]="suggestion"></textarea>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="postMessage()">Enviar</button>
+        <button type="button" class="btn btn-primary"
+          (click)="postMessage()">Enviar</button>
     </div>
 </app-modal-base>

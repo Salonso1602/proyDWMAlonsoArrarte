@@ -3,6 +3,7 @@ import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
 import { Observable } from 'rxjs';
 import { news } from './in-memory-data-sources/news';
 import { images } from './in-memory-data-sources/images';
+import { registeredUsers } from './in-memory-data-sources/users';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class InMemoryDataService extends InMemoryDbService {
   createDb() {
     return {
       news,
-      images
+      images,
+      registeredUsers
     };
   }
 }

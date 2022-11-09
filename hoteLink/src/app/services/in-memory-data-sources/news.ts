@@ -1,4 +1,5 @@
 import { DaysOfWeek } from "@enums/days-of-week";
+import { newsTypes } from "@enums/newsTypes";
 import { INews } from "@interfaces/news";
 
 export const news: INews[] = [
@@ -11,7 +12,8 @@ export const news: INews[] = [
       serviceTime: 15
     },
     caption: 'El mejor revuelto de la ciudad',
-    imageId: '0001',
+    imageId: '0006',
+    type : newsTypes.Food
   },
   {
     subject: {
@@ -27,7 +29,8 @@ export const news: INews[] = [
       }]
     },
     caption: '¡Toca para reservar tu lugar ya!',
-    imageId: '0001'
+    imageId: '0007',
+    type : newsTypes.Activity
   },
   {
     subject: {
@@ -38,7 +41,8 @@ export const news: INews[] = [
       entranceFee: 49.99
     },
     caption: '¡No te pierdas el show!',
-    imageId: '0001',
+    imageId: '0008',
+    type : newsTypes.Event
   },
   {
     subject: {
@@ -53,7 +57,8 @@ export const news: INews[] = [
         endTime: '18:00'
       }]
     },
-    imageId: '0001',
+    imageId: '0009',
     caption: '¡Toca para reservar tu lugar ya!',
+    type : newsTypes.Activity
   }
 ];

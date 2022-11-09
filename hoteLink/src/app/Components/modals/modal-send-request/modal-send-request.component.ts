@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Modals } from '../modals';
 
@@ -21,10 +21,11 @@ export class ModalSendRequestComponent implements OnInit {
     if(this.suggestion.value===''){
       alert("Por favor ingrese su sugerencia o reclamo en el espacio.")
     } else{
-      this.suggestion.reset()
+      this.suggestion.reset('')
     /*
     PLACEHOLDER PARA SERVICIO DE POST
     */
     }
   }
+
 }
