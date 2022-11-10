@@ -1,0 +1,15 @@
+<div class="container" *ngIf="hotel">
+    <a [routerLink]="['/', 'hotel', hotel?.id, 'details']">
+        <div class="card">
+            <h5>{{ hotel.name }}</h5>
+            <p>{{ hotel.shortDescription }}</p>
+        </div>
+    </a>
+
+    <a [routerLink]="['/', 'location', hotel.location.id,  'details']">
+        <div class="card">
+            <h5>{{ hotel.location.name }}</h5>
+            <p>{{ hotel.location.shortDescription }}</p>
+        </div>
+    </a>
+</div>

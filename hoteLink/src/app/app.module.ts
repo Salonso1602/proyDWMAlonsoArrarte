@@ -20,6 +20,8 @@ import { ModalFiltersComponent } from './Components/modals/modal-filters/modal-f
 import { BookableDetailsComponent } from './Components/news/bookable-details/bookable-details.component';
 import { InMemoryDataService } from '@services/in-memory-data.service';
 import { NewsListComponent } from './Components/news/news-list/news-list.component';
+import { MoreInfoCardComponent } from './Components/moreInfo/more-info-card/more-info-card.component';
+import { MoreInfoDetailsComponent } from './Components/moreInfo/more-info-details/more-info-details.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { NewsListComponent } from './Components/news/news-list/news-list.compone
     ModalLoginComponent,
     ModalFiltersComponent,
     BookableDetailsComponent,
-    NewsListComponent
+    NewsListComponent,
+    MoreInfoCardComponent,
+    MoreInfoDetailsComponent
   ],
   imports: [
     BrowserModule,
