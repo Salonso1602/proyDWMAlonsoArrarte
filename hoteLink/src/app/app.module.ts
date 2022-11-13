@@ -22,6 +22,9 @@ import { InMemoryDataService } from '@services/in-memory-data.service';
 import { NewsListComponent } from './Components/news/news-list/news-list.component';
 import { MoreInfoCardComponent } from './Components/moreInfo/more-info-card/more-info-card.component';
 import { MoreInfoDetailsComponent } from './Components/moreInfo/more-info-details/more-info-details.component';
+import { BookingComponent } from './Components/booking/booking.component';
+import { BookingDetailComponent } from './Components/booking/booking-detail/booking-detail.component';
+import { BookingCalendarComponent } from './Components/booking/booking-calendar/booking-calendar.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { MoreInfoDetailsComponent } from './Components/moreInfo/more-info-detail
     BookableDetailsComponent,
     NewsListComponent,
     MoreInfoCardComponent,
-    MoreInfoDetailsComponent
+    MoreInfoDetailsComponent,
+    BookingComponent,
+    BookingDetailComponent,
+    BookingCalendarComponent
   ],
   imports: [
     BrowserModule,
