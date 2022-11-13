@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IHotel } from '@interfaces/hotel';
+import { HotelService } from '@services/hotel.service';
 
 @Component({
   selector: 'app-more-info-card',
@@ -8,12 +9,22 @@ import { IHotel } from '@interfaces/hotel';
 })
 export class MoreInfoCardComponent implements OnInit {
 
-  @Input() hotel? : IHotel;
+  hotel? : IHotel;
 
-  constructor() { }
+  constructor(private hs : HotelService) { }
 
   ngOnInit(): void {
-    this.hotel = {
+    this.getHotel()
+  }
+
+  getHotel(){
+    this.hs.selectedHotel$.subscribe(hotel => this.hotel = hotel);
+  }
+}
+
+
+/** MOCKHOTEL
+ * {
       id : '0',
       name : 'Duncan Hill Hotel',
       location : {
@@ -28,6 +39,4 @@ export class MoreInfoCardComponent implements OnInit {
       shortDescription : 'El hotel cafetero número 1 de la región',
       longDescription : 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
     }
-  }
-
-}
+ */

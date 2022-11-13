@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IHotel } from '@interfaces/hotel';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +10,21 @@ export class HotelService {
 
   url = 'http:localhost:3000/api/v1/hotels'
 
-  selectedHotelId : string = '0';
-  selectedHotel? : Observable<IHotel> = new Observable((subscriber)=>
-  {
-    this.http.get<IHotel>(this.url + '/' + this.selectedHotelId).subscribe(res => subscriber.next(res));
-    
-  });
+  allHotels?: IHotel[];
+  selectedHotel$ = new BehaviorSubject<IHotel | undefined>(undefined);
 
-  constructor(private http : HttpClient) { }
+  constructor(
+    private http: HttpClient,
+  ) {
+    this.http.get<IHotel[]>(`http://localhost:3000/hotels`)
+      .pipe(
+        tap(hotels => this.selectedHotel$.next(hotels[0])),
+        tap(hotels => this.allHotels = hotels)
+      );
+  }
+
+  selectHotel(hotel: IHotel) {
+    this.selectedHotel$.next(hotel);
+  }
 
 }
