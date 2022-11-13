@@ -1,1 +1,19 @@
-<p>booking works!</p>
+<h1>Reserva</h1>
+<ng-container *ngIf="subject$ | async as subject">
+  <h2>{{ subject.name }}</h2>
+
+  <p>Cupos: {{ subject.booking.remaining }} / {{ subject.booking.total }}</p>
+  <app-booking-calendar></app-booking-calendar>
+
+  <app-event-booking-detail
+    *ngIf="isEvent(subject)"
+    [event]="subject">
+  </app-event-booking-detail>
+
+  <app-activity-booking-detail
+    *ngIf="isActivity(subject)"
+    [activity]="subject">
+  </app-activity-booking-detail>
+
+  <button class="btn btn-primary">Confirmar reserva</button>
+</ng-container>

@@ -23,8 +23,9 @@ import { NewsListComponent } from './Components/news/news-list/news-list.compone
 import { MoreInfoCardComponent } from './Components/moreInfo/more-info-card/more-info-card.component';
 import { MoreInfoDetailsComponent } from './Components/moreInfo/more-info-details/more-info-details.component';
 import { BookingComponent } from './Components/booking/booking.component';
-import { BookingDetailComponent } from './Components/booking/booking-detail/booking-detail.component';
+import { EventBookingDetailComponent } from './Components/booking/event-booking-detail/event-booking-detail.component';
 import { BookingCalendarComponent } from './Components/booking/booking-calendar/booking-calendar.component';
+import { ActivityBookingDetailComponent } from '@components/booking/activity-booking-detail/activity-booking-detail.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { BookingCalendarComponent } from './Components/booking/booking-calendar/
     MoreInfoCardComponent,
     MoreInfoDetailsComponent,
     BookingComponent,
-    BookingDetailComponent,
+    EventBookingDetailComponent,
+    ActivityBookingDetailComponent,
     BookingCalendarComponent
   ],
   imports: [
