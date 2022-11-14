@@ -1,24 +1,30 @@
 <h1>Reserva</h1>
 <ng-container *ngIf="subject$ | async as subject">
   <h2>{{ subject.name }}</h2>
-
-  <p>Lugar: {{ subject.place }}</p>
-  <p>Cupos disponibles: {{ subject.booking.remaining }} / {{ subject.booking.total }}</p>
-
-  <app-booking-calendar
-    [date]="isEvent(subject) ? subject.date : undefined"
-    [times]="isActivity(subject) ? subject.timesOfActivity : undefined">
-  </app-booking-calendar>
-
-  <app-event-booking-detail
-    *ngIf="isEvent(subject)"
-    [event]="subject">
-  </app-event-booking-detail>
-
-  <app-activity-booking-detail
-    *ngIf="isActivity(subject)"
-    [activity]="subject">
-  </app-activity-booking-detail>
-
+  <div class="row">
+    <div class="col-xl-5">
+      <p>Lugar: {{ subject.place }}</p>
+      <p>Cupos disponibles: {{ subject.booking.remaining }} / {{ subject.booking.total }}</p>
+    
+      <app-event-booking-detail
+        *ngIf="isEvent(subject)"
+        [event]="subject">
+      </app-event-booking-detail>
+    
+      <app-activity-booking-detail
+        *ngIf="isActivity(subject)"
+        [activity]="subject">
+      </app-activity-booking-detail>
+    
+      <app-booking-form [requireUntilDate]="isActivity(subject)"></app-booking-form>
+    </div>
+    <div class="col-xl-7">
+      <app-booking-calendar
+      [date]="isEvent(subject) ? subject.date : undefined"
+      [times]="isActivity(subject) ? subject.timesOfActivity : undefined">
+    </app-booking-calendar>
+    </div>
+  </div>
+    
   <button class="btn btn-primary">Confirmar reserva</button>
 </ng-container>
