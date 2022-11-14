@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DaysOfWeek, getDayName } from '@enums/days-of-week';
 import { IActivity } from '@interfaces/activity';
 
 @Component({
@@ -14,4 +15,7 @@ export class ActivityBookingDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getDayName(day: DaysOfWeek): string {
+    return getDayName(day);
+  }
 }

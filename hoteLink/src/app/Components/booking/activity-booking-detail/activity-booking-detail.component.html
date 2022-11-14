@@ -1,1 +1,12 @@
-<p>activity-booking-detail works!</p>
+<p>Costo semanal: {{ activity.weeklyPrice | currency }}</p>
+<h6>Todos los horarios</h6>
+<div class="row">
+  <div
+    *ngFor="let time of activity.timesOfActivity"
+    class="col-sm-6">
+      <div class="activity-time">
+        <p><b>{{ getDayName(time.day) }}</b></p>
+        <p>{{ time.startTime | date: 'HH:mm' }} - {{ time.endTime | date: 'HH:mm' }}</p>
+      </div>
+  </div>
+</div>

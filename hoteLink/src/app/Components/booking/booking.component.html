@@ -2,8 +2,13 @@
 <ng-container *ngIf="subject$ | async as subject">
   <h2>{{ subject.name }}</h2>
 
-  <p>Cupos: {{ subject.booking.remaining }} / {{ subject.booking.total }}</p>
-  <app-booking-calendar></app-booking-calendar>
+  <p>Lugar: {{ subject.place }}</p>
+  <p>Cupos disponibles: {{ subject.booking.remaining }} / {{ subject.booking.total }}</p>
+
+  <app-booking-calendar
+    [date]="isEvent(subject) ? subject.date : undefined"
+    [times]="isActivity(subject) ? subject.timesOfActivity : undefined">
+  </app-booking-calendar>
 
   <app-event-booking-detail
     *ngIf="isEvent(subject)"

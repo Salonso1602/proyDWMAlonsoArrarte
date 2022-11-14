@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { newsTypes } from '@enums/newsTypes';
-import { IActivity } from '@interfaces/activity';
+import { IActivity, TimeOfActivity } from '@interfaces/activity';
 import { IBookable } from '@interfaces/bookable';
 import { IEvent } from '@interfaces/event';
 import { ActivitiesService } from '@services/activities.service';
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent implements OnInit {
-  subject$!: Observable<IBookable>;
+  subject$!: Observable<IEvent | IActivity>;
   type!: string;
 
   constructor(
