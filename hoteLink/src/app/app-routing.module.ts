@@ -4,6 +4,7 @@ import { BookableDetailsComponent } from '@components/news/bookable-details/book
 import { NewsListComponent } from '@components/news/news-list/news-list.component';
 import { MoreInfoDetailsComponent } from '@components/moreInfo/more-info-details/more-info-details.component';
 import { MoreInfoCardComponent } from '@components/moreInfo/more-info-card/more-info-card.component';
+import { RequestServicesComponent } from '@components/request-services/request-services.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'aboutUs',
     component: MoreInfoCardComponent
+  },
+  {
+    path: 'requestService',
+    component: RequestServicesComponent
   },
   {
     path: 'event/:id/details',
