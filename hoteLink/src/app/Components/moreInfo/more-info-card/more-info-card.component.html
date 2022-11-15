@@ -1,18 +1,25 @@
 <div class="container" *ngIf="hotel">
+    <div class="row">
+    <div class="col-md-6">
     <a [routerLink]="['/', 'hotel', hotel.id, 'details']">
         <div class="card">
             <h2>Sobre Nosotros:</h2>
+            <hr>
             <h3>{{ hotel.name }}</h3>
             <p>{{ hotel.shortDescription }}</p>
         </div>
     </a>
+    </div>
 
+    <div class="col-md-6">
     <a [routerLink]="['/', 'location', hotel.location.id,  'details']">
-        <div class="card">
+        <div class="card location">
             <h2>Sobre Nuestra Casa:</h2>
+            <hr>
             <h3>{{ hotel.location.name }}</h3>
             <p>{{ hotel.location.shortDescription }}</p>
         </div>
     </a>
-
+    </div>
+</div>
 </div>
