@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { news } from './in-memory-data-sources/news';
 import { images } from './in-memory-data-sources/images';
 import { registeredUsers } from './in-memory-data-sources/users';
+import { Hotels } from './in-memory-data-sources/hotels';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class InMemoryDataService extends InMemoryDbService {
     return {
       news,
       images,
-      registeredUsers
+      registeredUsers,
+      Hotels
     };
   }
 }

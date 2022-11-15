@@ -27,7 +27,7 @@ export class MoreInfoDetailsComponent implements OnInit {
 
     switch(currentURL[currentURL.indexOf('details') - 2]){
       case 'location':
-        //this.ls.getLocationById(this.detailedId).subscribe(res => this.detailed = res);
+        this.hs.selectedHotel$.subscribe(res => this.detailed = res?.location);
         this.headerText = 'Sobre Nuestra Casa';
         break;
       case 'hotel':
