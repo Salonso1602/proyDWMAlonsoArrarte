@@ -4,7 +4,7 @@
 }
 
 a.navbar-brand {
-    font-size: 2rem;
+    font-size: clamp(1rem, 6vw, 2rem);
     font-weight: 1000;
     text-decoration: none;
     color: black;
