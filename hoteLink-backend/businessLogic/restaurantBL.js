@@ -1,11 +1,11 @@
 const Food = require('../entities/dish');
-const eventDA = require('../db/dataAccess/eventDA');
+const foodDA = require('../db/dataAccess/foodDA');
 
 module.exports = {
     getAllFoods :  async () => {
         let result = [];
 
-        const queryRes = await eventDA.getAllEvents();
+        const queryRes = await foodDA.getAllEvents();
         if(queryRes.length === 0){
             return undefined;
         }
