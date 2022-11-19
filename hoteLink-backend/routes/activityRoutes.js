@@ -79,8 +79,9 @@ router.post('/:id/book', async function(req, res, next) {
     let result;
 
     try{
-        result = await activityBL.bookActivity(req.params., req.body.userId);
-    }catch(err){
+        result = await activityBL.bookActivity(req.params.id, req.body.userId);
+    }
+    catch(err){
         console.error(err.message);
         res.status(500).json({message : 'No se pudo hacer la reserva'});
         return;
