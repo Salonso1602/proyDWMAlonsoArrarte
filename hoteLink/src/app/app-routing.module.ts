@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewsCardComponent } from '@components/news/news-card/news-card.component';
 import { BookableDetailsComponent } from '@components/news/bookable-details/bookable-details.component';
 import { NewsListComponent } from '@components/news/news-list/news-list.component';
 import { MoreInfoDetailsComponent } from '@components/moreInfo/more-info-details/more-info-details.component';
 import { BookingComponent } from '@components/booking/booking.component';
+import { MoreInfoCardComponent } from '@components/moreInfo/more-info-card/more-info-card.component';
+import { RequestServicesComponent } from '@components/request-services/request-services.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,14 @@ const routes: Routes = [
   {
     path: 'home',
     component: NewsListComponent
+  },
+  {
+    path: 'aboutUs',
+    component: MoreInfoCardComponent
+  },
+  {
+    path: 'requestService',
+    component: RequestServicesComponent
   },
   {
     path: 'event/:id/details',

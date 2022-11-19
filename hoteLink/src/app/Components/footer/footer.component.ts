@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IHotel } from '@interfaces/hotel';
+import { HotelService } from '@services/hotel.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  currentHotel? : IHotel;
+
+  constructor(private hs : HotelService) { }
 
   ngOnInit(): void {
+    this.hs.selectedHotel$.subscribe(hotel => this.currentHotel = hotel);
   }
 
 }

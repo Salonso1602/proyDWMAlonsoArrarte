@@ -29,6 +29,7 @@ import { ActivityBookingDetailComponent } from '@components/booking/activity-boo
 import { ResponseDateTransformInterceptor } from './interceptors/response-date-transform.interceptor';
 import { DayNamePipe } from './pipes/day-name.pipe';
 import { BookingFormComponent } from './Components/booking/booking-form/booking-form.component';
+import { RequestServicesComponent } from './Components/request-services/request-services.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { BookingFormComponent } from './Components/booking/booking-form/booking-
     ActivityBookingDetailComponent,
     BookingCalendarComponent,
     DayNamePipe,
-    BookingFormComponent
+    BookingFormComponent,
+    RequestServicesComponent
   ],
   imports: [
     BrowserModule,

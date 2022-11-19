@@ -8,6 +8,7 @@ import { registeredUsers } from './in-memory-data-sources/users';
 import { events } from './in-memory-data-sources/events';
 import { activities } from './in-memory-data-sources/activities';
 import { dishes } from './in-memory-data-sources/dishes';
+import { Hotels } from './in-memory-data-sources/hotels';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class InMemoryDataService extends InMemoryDbService {
       registeredUsers,
       events,
       activities,
-      dishes
+      dishes,
+      Hotels
     };
   }
 }
