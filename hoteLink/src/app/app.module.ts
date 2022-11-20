@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { ModalBaseComponent } from '@components/modals/modal-base/modal-base.component';
@@ -22,6 +22,13 @@ import { InMemoryDataService } from '@services/in-memory-data.service';
 import { NewsListComponent } from './Components/news/news-list/news-list.component';
 import { MoreInfoCardComponent } from './Components/moreInfo/more-info-card/more-info-card.component';
 import { MoreInfoDetailsComponent } from './Components/moreInfo/more-info-details/more-info-details.component';
+import { BookingComponent } from './Components/booking/booking.component';
+import { EventBookingDetailComponent } from './Components/booking/event-booking-detail/event-booking-detail.component';
+import { BookingCalendarComponent } from './Components/booking/booking-calendar/booking-calendar.component';
+import { ActivityBookingDetailComponent } from '@components/booking/activity-booking-detail/activity-booking-detail.component';
+import { ResponseDateTransformInterceptor } from './interceptors/response-date-transform.interceptor';
+import { DayNamePipe } from './pipes/day-name.pipe';
+import { BookingFormComponent } from './Components/booking/booking-form/booking-form.component';
 import { RequestServicesComponent } from './Components/request-services/request-services.component';
 
 @NgModule({
@@ -41,17 +48,30 @@ import { RequestServicesComponent } from './Components/request-services/request-
     NewsListComponent,
     MoreInfoCardComponent,
     MoreInfoDetailsComponent,
+    BookingComponent,
+    EventBookingDetailComponent,
+    ActivityBookingDetailComponent,
+    BookingCalendarComponent,
+    DayNamePipe,
+    BookingFormComponent,
     RequestServicesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseDateTransformInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

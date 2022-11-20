@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BookableDetailsComponent } from '@components/news/bookable-details/bookable-details.component';
 import { NewsListComponent } from '@components/news/news-list/news-list.component';
 import { MoreInfoDetailsComponent } from '@components/moreInfo/more-info-details/more-info-details.component';
+import { BookingComponent } from '@components/booking/booking.component';
 import { MoreInfoCardComponent } from '@components/moreInfo/more-info-card/more-info-card.component';
 import { RequestServicesComponent } from '@components/request-services/request-services.component';
 
@@ -39,6 +40,14 @@ const routes: Routes = [
   {
     path: 'location/:id/details',
     component: MoreInfoDetailsComponent
+  },
+  {
+    path: 'activity/:id/booking',
+    component: BookingComponent
+  },
+  {
+    path: 'event/:id/booking',
+    component: BookingComponent
   }
 ];
 

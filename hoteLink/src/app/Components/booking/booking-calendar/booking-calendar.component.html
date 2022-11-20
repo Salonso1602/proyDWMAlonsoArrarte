@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-sm-6 next-time">
+    <p>Próximo horario</p>
+    <p>{{ selectedDate.getDay() | dayName }}</p>
+    <p *ngIf="times">{{ nativeSelectedDate | date: 'HH:mm' }}</p>
+  </div>
+  
+  <ngb-datepicker [(ngModel)]="ngbSelectedDate" inert></ngb-datepicker>
+</div>
