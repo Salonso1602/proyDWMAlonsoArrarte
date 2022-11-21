@@ -3,7 +3,7 @@ module.exports = class Bookable {
   name;
   place;
 
-  constructor (id, name, place){
+  constructor ({id, name, place}){
     this.id = id;
     this.name = name;
     this.place = place;

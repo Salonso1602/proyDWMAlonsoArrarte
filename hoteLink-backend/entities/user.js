@@ -3,7 +3,7 @@ module.exports = class User {
     password
     //hay que cambiar la manera que se guarda la password por seguridad
 
-    constructor(email, password) {
+    constructor({email, password}) {
         this.email = email;
         this.password = password;
     }
