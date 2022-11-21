@@ -1,16 +1,16 @@
 const Food = require('../entities/dish');
-const foodDA = require('../db/dataAccess/foodDA');
+const foodDA = require('../dataAccess/foodDA');
 
 module.exports = {
-    getAllFoods :  async () => {
+    getAllFoods :  async (hotelId) => {
         let result = [];
 
-        const queryRes = await foodDA.getAllEvents();
-        if(queryRes.length === 0){
+        const resultDA = await foodDA.getAllFoods(hotelId);
+        if(resultDA.length === 0){
             return undefined;
         }
         else{
-            queryRes.forEach(fod => {
+            resultDA.forEach(fod => {
                 result.push(new Food(fod.id, fod.name, fod.description, fod.price, fod.serviceTime));
             });
             return result;

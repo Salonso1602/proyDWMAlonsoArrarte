@@ -1,48 +1,56 @@
 const Event = require('../entities/event');
-const eventDA = require('../db/dataAccess/eventDA');
-const questionsDA = require('../db/dataAccess/questionsDA');
-const bookingsDA = require('../db/dataAccess/bookingsDA');
+const eventDA = require('../dataAccess/eventDA');
+const questionsDA = require('../dataAccess/questionsDA');
+const bookingsDA = require('../dataAccess/bookingsDA');
 
 module.exports = {
-    getAllEvents :  async () => {
+    getAllEvents :  async (queryParams) => {
         let result = [];
 
-        const queryRes = await eventDA.getAllEvents();
-        if(queryRes.length === 0){
+        const resultDA = await eventDA.getAllEvents(queryParams);
+        if(resultDA.length === 0){
             return undefined;
         }
         else{
-            queryRes.forEach(evt => {
+            resultDA.forEach(evt => {
                 result.push(new Event(evt.id, evt.name, evt.place, evt.date, evt.entranceFee));
             });
             return result;
         }
     },
     getEventById :  async (wantedId) => {
-        const queryRes = await eventDA.getEventWithId(wantedId);
-        if(queryRes.length === 0){
+        const resultDA = await eventDA.getEventWithId(wantedId);
+        if(resultDA.length === 0){
             return undefined;
         }
         else{
-            const evt = queryRes[0];
+            const evt = resultDA[0];
             return new Event(evt.id, evt.name, evt.place, evt.date, evt.entranceFee);
         }
     },
     getSchedule :  async (wantedId) => {
-        const queryRes = await eventDA.getEventWithId(wantedId);
-        if(queryRes.length === 0){
+        const resultDA = await eventDA.getEventWithId(wantedId);
+        if(resultDA.length === 0){
             return undefined;
         }
         else{
-            return queryRes[0].date;
+            return resultDA[0].date;
         }
     },
     addQuestion :  async (wantedId, questionText) => {
-        const queryRes = await questionsDA.insertQuestion(wantedId, questionText);
-       //no se despues que va
+        const resultDA = await questionsDA.insertQuestion(wantedId, questionText);
+        if(resultDA === true || resultDA === false){
+            return resultDA;
+        } else {
+            return undefined;
+        }
     },
     addQuestion :  async (wantedId, userId) => {
-        const queryRes = await bookingsDA.book(wantedId, userId);
-       //no se despues que va
+        const resultDA = await bookingsDA.book(wantedId, userId);
+        if(resultDA === true || resultDA === false){
+            return resultDA;
+        } else {
+            return undefined;
+        }
     },
 }

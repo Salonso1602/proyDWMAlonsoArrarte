@@ -7,7 +7,7 @@ router.get('/dishes', async function(req, res, next) {
     let result;
 
     try{
-        result = await restaurantBL.getAllFoods();
+        result = await restaurantBL.getAllFoods(req.query.hotelId);
     }catch(err){
         console.error(err.message);
         res.status(500).json({message : 'Error interno del Server'});
