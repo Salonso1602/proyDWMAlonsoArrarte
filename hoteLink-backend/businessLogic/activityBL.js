@@ -20,22 +20,22 @@ module.exports = {
     },
     getActivityById: async (wantedId) => {
         const resultDA = await activityDA.getActivityWithId(wantedId);
-        if (resultDA.length === 0) {
+        if (resultDA) {
             return undefined;
         }
-        else {
-            const act = resultDA[0];
+        else{
+            const act = resultDA;
             return new Activity(act.id, act.name, act.place, act.monthlyPrice, act.timesOfActivity);
         }
     },
     getSchedule: async (wantedId) => {
         //se asume mismos horarios en todos los hoteles
         const resultDA = await activityDA.getActivityWithId(wantedId);
-        if (resultDA.length === 0) {
+        if (resultDA) {
             return undefined;
         }
         else {
-            return resultDA[0].timesOfActivity;
+            return resultDA.timesOfActivity;
         }
     },
     addQuestion: async (wantedId, questionText) => {
@@ -46,8 +46,8 @@ module.exports = {
             return undefined;
         }
     },
-    addBooking: async (wantedId, userId) => {
-        const resultDA = await bookingsDA.book(wantedId, userId);
+    bookActivity: async (wantedId, userId, qtyPeople, finalPrice) => {
+        const resultDA = await bookingsDA.book(wantedId, userId, qtyPeople, finalPrice);
         if(resultDA === true || resultDA === false){
             return resultDA;
         } else {

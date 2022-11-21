@@ -84,7 +84,7 @@ router.post('/:id/book', async function(req, res, next) {
     let result;
 
     try{
-        result = await activityBL.bookActivity(req.params.id, req.body.userId);
+        result = await activityBL.bookActivity(req.params.actId, req.body.userId, req.body.amountPeople, req.body.finalPrice);
     }
     catch(err){
         console.error(err.message);

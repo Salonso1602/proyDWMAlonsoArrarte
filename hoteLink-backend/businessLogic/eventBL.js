@@ -45,8 +45,8 @@ module.exports = {
             return undefined;
         }
     },
-    addQuestion :  async (wantedId, userId) => {
-        const resultDA = await bookingsDA.book(wantedId, userId);
+    bookEvent :  async (wantedId, userId, qtyPeople, finalPrice) => {
+        const resultDA = await bookingsDA.book(wantedId, userId, qtyPeople, finalPrice);
         if(resultDA === true || resultDA === false){
             return resultDA;
         } else {
