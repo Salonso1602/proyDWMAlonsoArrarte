@@ -5,36 +5,30 @@ const bookingsDA = require('../dataAccess/bookingsDA');
 
 module.exports = {
     getAllEvents :  async (queryParams) => {
-        let result = [];
-
         const resultDA = await eventDA.getAllEvents(queryParams);
         if(resultDA.length === 0){
             return undefined;
         }
         else{
-            resultDA.forEach(evt => {
-                result.push(new Event(evt.id, evt.name, evt.place, evt.date, evt.entranceFee));
-            });
-            return result;
+            return resultDA;
         }
     },
     getEventById :  async (wantedId) => {
         const resultDA = await eventDA.getEventWithId(wantedId);
-        if(resultDA.length === 0){
+        if(!resultDA){
             return undefined;
         }
         else{
-            const evt = resultDA[0];
-            return new Event(evt.id, evt.name, evt.place, evt.date, evt.entranceFee);
+            return resultDA;
         }
     },
     getSchedule :  async (wantedId) => {
         const resultDA = await eventDA.getEventWithId(wantedId);
-        if(resultDA.length === 0){
+        if(!resultDA){
             return undefined;
         }
         else{
-            return resultDA[0].date;
+            return resultDA.date;
         }
     },
     addQuestion :  async (wantedId, questionText) => {

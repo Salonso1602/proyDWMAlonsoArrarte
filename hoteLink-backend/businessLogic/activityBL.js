@@ -5,33 +5,27 @@ const bookingsDA = require('../dataAccess/bookingsDA');
 
 module.exports = {
     getAllActivities: async (queryParams) => {
-        let result = [];
-
         const resultDA = await activityDA.getAllActivities(queryParams);
         if (resultDA.length === 0) {
             return undefined;
         }
         else {
-            resultDA.forEach(act => {
-                result.push(new Activity(act.id, act.name, act.place, act.monthlyPrice, act.timesOfActivity));
-            });
-            return result;
+            return resultDA;
         }
     },
     getActivityById: async (wantedId) => {
         const resultDA = await activityDA.getActivityWithId(wantedId);
-        if (resultDA) {
+        if (!resultDA) {
             return undefined;
         }
         else{
-            const act = resultDA;
-            return new Activity(act.id, act.name, act.place, act.monthlyPrice, act.timesOfActivity);
+            return resultDA;
         }
     },
     getSchedule: async (wantedId) => {
         //se asume mismos horarios en todos los hoteles
         const resultDA = await activityDA.getActivityWithId(wantedId);
-        if (resultDA) {
+        if (!resultDA) {
             return undefined;
         }
         else {
