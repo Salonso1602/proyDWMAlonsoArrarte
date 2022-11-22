@@ -14,7 +14,6 @@ import { NewsCardComponent } from './Components/news/news-card/news-card.compone
 import { FooterComponent } from './Components/footer/footer.component';
 import { ModalSendRequestComponent } from './Components/modals/modal-send-request/modal-send-request.component';
 import { ModalToggleButtonComponent } from '@components/modals/modal-toggle-button/modal-toggle-button.component';
-import { SearchAndFilterComponent } from './Components/search-and-filter/search-and-filter.component';
 import { ModalLoginComponent } from './Components/modals/modal-login/modal-login.component';
 import { ModalFiltersComponent } from './Components/modals/modal-filters/modal-filters.component';
 import { BookableDetailsComponent } from './Components/news/bookable-details/bookable-details.component';
@@ -30,6 +29,12 @@ import { ResponseDateTransformInterceptor } from './interceptors/response-date-t
 import { DayNamePipe } from './pipes/day-name.pipe';
 import { BookingFormComponent } from './Components/booking/booking-form/booking-form.component';
 import { RequestServicesComponent } from './Components/request-services/request-services.component';
+import { RestaurantComponent } from './Components/restaurant/restaurant.component';
+import { SearchFilterComponent } from './Components/search/search-filter/search-filter.component';
+import { SearchResultsComponent } from './Components/search/search-results/search-results.component';
+import { SearchComponent } from '@components/search/search.component';
+import { SearchFilterTextComponent } from './Components/search/search-filter/search-filter-text/search-filter-text.component';
+import { SearchFilterCategoriesComponent } from './Components/search/search-filter/search-filter-categories/search-filter-categories.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,6 @@ import { RequestServicesComponent } from './Components/request-services/request-
     ModalToggleButtonComponent,
     ModalBaseComponent,
     ModalSendRequestComponent,
-    SearchAndFilterComponent,
     ModalLoginComponent,
     ModalFiltersComponent,
     BookableDetailsComponent,
@@ -54,7 +58,13 @@ import { RequestServicesComponent } from './Components/request-services/request-
     BookingCalendarComponent,
     DayNamePipe,
     BookingFormComponent,
-    RequestServicesComponent
+    RequestServicesComponent,
+    RestaurantComponent,
+    SearchComponent,
+    SearchFilterComponent,
+    SearchResultsComponent,
+    SearchFilterTextComponent,
+    SearchFilterCategoriesComponent
   ],
   imports: [
     BrowserModule,
