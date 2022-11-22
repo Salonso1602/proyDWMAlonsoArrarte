@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { IUser } from '@interfaces/user';
 import { HttpClient } from '@angular/common/http';
+import * as moment from "moment";
+import { HotelService } from './hotel.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,38 +12,39 @@ export class LoginService {
 
   url = 'http://localhost:3000/auth/login';
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient, private hs : HotelService) { }
 
-  private getUsers() : Observable<IUser[]>{
-    return of(registeredUsers)
+  authUser(email: string, password: string) :Observable<ikey> {
+    return this.http.post<ikey>(this.url, { email, password })
+      .pipe(tap(resp => {this.setSession(resp)}) )
   }
 
-  authUser(email : string, password : string){
-        //return this.http.post(this.url, {email: email, password:password});
-    let allUsers : IUser[] = [];
-    this.getUsers().subscribe(users =>allUsers = users);
-    for(let index = 0; index < allUsers.length; index++) {
-      const user = allUsers[index];
-      if(user.email === email){
-        if(user.password === password){
-          return true;
-        }
-        return false;
-      }
-    };
-    return false;
-    }
+
+  private setSession(authResult: ikey) {
+    const expiresAt = moment().add(authResult.expiresIn, 'second');
+
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+
   }
 
-  
+  logout() {
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("expires_at");
+  }
 
-const registeredUsers : IUser[] = [
-  {
-    email: "mesipelado@gmail.com", 
-    password: "vamomesi"
-  },
-  {
-    email: "prueba@gmail.com", 
-    password: "test"
-  },
-];
+  public isLoggedIn() {
+    return moment().isBefore(this.getExpiration());
+  }
+
+  getExpiration() {
+    const expiration = localStorage.getItem("expires_at");
+    const expiresAt = JSON.parse(expiration ? expiration : '0');
+    return moment(expiresAt);
+  }
+}
+
+interface ikey {
+  idToken: string,
+  expiresIn: string
+}
