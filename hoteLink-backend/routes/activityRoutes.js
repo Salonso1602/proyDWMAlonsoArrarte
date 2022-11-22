@@ -104,7 +104,7 @@ router.post('/:id/book', async function(req, res, next) {
 
 //DESIRABLE: cancel activity reservation
 router.post('/:id/cancel', async function(req, res, next) {
-
+    res.sendStatus(404);
 });
 
 module.exports = router;
