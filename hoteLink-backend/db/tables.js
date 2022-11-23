@@ -12,6 +12,7 @@ module.exports = Object.freeze({
   IMAGE: 'image',
   LOCATION: 'location',
   NEWS: 'news',
+  NEWS_IN_HOTEL: 'news_in_hotel',
   TIME_OF_ACTIVITY: 'time_of_activity',
   USER: 'user'
 })
