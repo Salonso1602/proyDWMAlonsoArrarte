@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { firstValueFrom, Observable, of, tap } from 'rxjs';
 import { IUser } from '@interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import * as moment from "moment";
@@ -14,9 +14,18 @@ export class LoginService {
 
   constructor(private http: HttpClient, private hs : HotelService) { }
 
-  authUser(email: string, password: string) :Observable<ikey> {
-    return this.http.post<ikey>(this.url, { email, password })
-      .pipe(tap(resp => {this.setSession(resp)}) )
+  authUser(email: string, password: string) : Promise<ikey | undefined> {
+    return firstValueFrom(this.hs.selectedHotel$).then( hotel => {
+      let response;
+      this.http.post<ikey>(this.url, {email, password, hotel})
+        .pipe(
+            tap(resp => {
+              this.setSession(resp);
+              response = resp;
+            })
+        );
+      return response;
+    })
   }
 
 
