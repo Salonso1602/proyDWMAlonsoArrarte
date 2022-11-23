@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
 import { DishesService } from '@services/dishes.service';
 
-type SearchEntitiesNames = 'activity' | 'event' | 'dish';
+export type SearchEntitiesNames = 'activity' | 'event' | 'dish';
 export type SearchEntities = IActivity | IEvent | IDish;
 
 @Component({

@@ -7,6 +7,7 @@ import { BookingComponent } from '@components/booking/booking.component';
 import { MoreInfoCardComponent } from '@components/moreInfo/more-info-card/more-info-card.component';
 import { RequestServicesComponent } from '@components/request-services/request-services.component';
 import { RestaurantComponent } from '@components/restaurant/restaurant.component';
+import { BookablesListComponent } from '@components/booking/bookables-list/bookables-list.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path: 'restaurant',
     component: RestaurantComponent
+  },
+  {
+    path: 'activitiesAndEvents',
+    component: BookablesListComponent
   }
 ];
 

@@ -35,6 +35,8 @@ import { SearchResultsComponent } from './Components/search/search-results/searc
 import { SearchComponent } from '@components/search/search.component';
 import { SearchFilterTextComponent } from './Components/search/search-filter/search-filter-text/search-filter-text.component';
 import { SearchFilterCategoriesComponent } from './Components/search/search-filter/search-filter-categories/search-filter-categories.component';
+import { BookablesListComponent } from './Components/booking/bookables-list/bookables-list.component';
+import { BookableTypePipe } from './pipes/bookable-type.pipe';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { SearchFilterCategoriesComponent } from './Components/search/search-filt
     SearchFilterComponent,
     SearchResultsComponent,
     SearchFilterTextComponent,
-    SearchFilterCategoriesComponent
+    SearchFilterCategoriesComponent,
+    BookablesListComponent,
+    BookableTypePipe
   ],
   imports: [
     BrowserModule,
