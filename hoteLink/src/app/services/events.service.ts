@@ -31,6 +31,8 @@ export class EventsService implements SearchService<IEvent> {
           return retrievedItems.map(retrievedItem => {
             return {
               item: retrievedItem,
+              cardTitle: retrievedItem.name,
+              cardDescription: retrievedItem.description,
               detailsRouterLink: ['/events', retrievedItem.id.toString()]
             }
           })

@@ -7,5 +7,7 @@ export interface SearchService<T> {
 
 export interface RetrievedItem<T> {
   item: T;
+  cardTitle: string;
+  cardDescription: string;
   detailsRouterLink: string[];
 }

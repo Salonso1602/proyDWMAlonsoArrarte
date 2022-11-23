@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { RetrievedItem } from '../search-service';
+import { SearchEntities } from '../search.component';
 
 @Component({
   selector: 'app-search-results',
@@ -6,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnInit {
+  @Input() data$!: Observable<RetrievedItem<SearchEntities>[]>;
 
   constructor() { }
 
