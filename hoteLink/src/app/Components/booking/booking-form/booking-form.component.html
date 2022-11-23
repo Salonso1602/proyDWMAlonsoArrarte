@@ -1,0 +1,12 @@
+<form [formGroup]="reservationForm">
+  <label for="form-places">Lugares a reservar</label>
+  <input type="number" id="form-places" formControlName="places"/>
+
+  <label for="form-name">Nombre de la reserva</label>
+  <input type="text" id="form-name" formControlName="name">
+
+  <ng-container *ngIf="requireUntilDate">
+    <label for="form-until-date">Fecha hasta la que reserva</label>
+    <input type="date">
+  </ng-container>
+</form>

@@ -13,6 +13,12 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Filtrar</button>
+        <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="updateSelectedCategories()"
+            data-bs-dismiss="modal">
+                Filtrar
+        </button>
     </div>
 </app-modal-base>

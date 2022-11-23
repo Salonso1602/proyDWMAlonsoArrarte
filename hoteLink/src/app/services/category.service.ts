@@ -45,26 +45,31 @@ export class CategoryService {
 
 const allCategories : ICategory[] = [
 {
+  id: 1,
   name: 'Amanecer',
   type: categoryTypes.Activity,
   imageId: '0001'
 },
 {
+  id: 2,
   name: 'Deporte',
   type: categoryTypes.Activity,
   imageId: '0002'
 },
 {
+  id: 3,
   name: 'Noche',
   type: categoryTypes.Activity,
   imageId: '0003'
 },
 {
+  id: 4,
   name: 'Vegana',
   type: categoryTypes.Food,
   imageId: '0004'
 },
 {
+  id: 5,
   name: 'Postre',
   type: categoryTypes.Food,
   imageId: '0005'

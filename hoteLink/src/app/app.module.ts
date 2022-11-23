@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { ModalBaseComponent } from '@components/modals/modal-base/modal-base.component';
@@ -14,7 +14,6 @@ import { NewsCardComponent } from './Components/news/news-card/news-card.compone
 import { FooterComponent } from './Components/footer/footer.component';
 import { ModalSendRequestComponent } from './Components/modals/modal-send-request/modal-send-request.component';
 import { ModalToggleButtonComponent } from '@components/modals/modal-toggle-button/modal-toggle-button.component';
-import { SearchAndFilterComponent } from './Components/search-and-filter/search-and-filter.component';
 import { ModalLoginComponent } from './Components/modals/modal-login/modal-login.component';
 import { ModalFiltersComponent } from './Components/modals/modal-filters/modal-filters.component';
 import { BookableDetailsComponent } from './Components/news/bookable-details/bookable-details.component';
@@ -22,7 +21,22 @@ import { InMemoryDataService } from '@services/in-memory-data.service';
 import { NewsListComponent } from './Components/news/news-list/news-list.component';
 import { MoreInfoCardComponent } from './Components/moreInfo/more-info-card/more-info-card.component';
 import { MoreInfoDetailsComponent } from './Components/moreInfo/more-info-details/more-info-details.component';
+import { BookingComponent } from './Components/booking/booking.component';
+import { EventBookingDetailComponent } from './Components/booking/event-booking-detail/event-booking-detail.component';
+import { BookingCalendarComponent } from './Components/booking/booking-calendar/booking-calendar.component';
+import { ActivityBookingDetailComponent } from '@components/booking/activity-booking-detail/activity-booking-detail.component';
+import { ResponseDateTransformInterceptor } from './interceptors/response-date-transform.interceptor';
+import { DayNamePipe } from './pipes/day-name.pipe';
+import { BookingFormComponent } from './Components/booking/booking-form/booking-form.component';
 import { RequestServicesComponent } from './Components/request-services/request-services.component';
+import { RestaurantComponent } from './Components/restaurant/restaurant.component';
+import { SearchFilterComponent } from './Components/search/search-filter/search-filter.component';
+import { SearchResultsComponent } from './Components/search/search-results/search-results.component';
+import { SearchComponent } from '@components/search/search.component';
+import { SearchFilterTextComponent } from './Components/search/search-filter/search-filter-text/search-filter-text.component';
+import { SearchFilterCategoriesComponent } from './Components/search/search-filter/search-filter-categories/search-filter-categories.component';
+import { BookablesListComponent } from './Components/booking/bookables-list/bookables-list.component';
+import { BookableTypePipe } from './pipes/bookable-type.pipe';
 
 @NgModule({
   declarations: [
@@ -34,24 +48,44 @@ import { RequestServicesComponent } from './Components/request-services/request-
     ModalToggleButtonComponent,
     ModalBaseComponent,
     ModalSendRequestComponent,
-    SearchAndFilterComponent,
     ModalLoginComponent,
     ModalFiltersComponent,
     BookableDetailsComponent,
     NewsListComponent,
     MoreInfoCardComponent,
     MoreInfoDetailsComponent,
-    RequestServicesComponent
+    BookingComponent,
+    EventBookingDetailComponent,
+    ActivityBookingDetailComponent,
+    BookingCalendarComponent,
+    DayNamePipe,
+    BookingFormComponent,
+    RequestServicesComponent,
+    RestaurantComponent,
+    SearchComponent,
+    SearchFilterComponent,
+    SearchResultsComponent,
+    SearchFilterTextComponent,
+    SearchFilterCategoriesComponent,
+    BookablesListComponent,
+    BookableTypePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseDateTransformInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

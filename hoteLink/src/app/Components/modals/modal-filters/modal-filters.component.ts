@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Modals } from '../modals';
 import { categoryTypes } from '@enums/categoryTypes';
 import { CategoryService } from '@services/category.service';
@@ -14,6 +14,8 @@ export class ModalFiltersComponent implements OnInit {
   filters : ICategory[] = [];
   @Input() filterType : categoryTypes = categoryTypes.Food;
   selectedFilters : ICategory[] = [];
+
+  @Output() selectionConfirmed = new EventEmitter<ICategory[]>();
 
   constructor(private filterService : CategoryService) { }
 
@@ -38,6 +40,9 @@ export class ModalFiltersComponent implements OnInit {
     } else {
       this.selectedFilters.push(filter);
     }
-    //console.log(this.selectedFilters);
+  }
+
+  updateSelectedCategories() {
+    this.selectionConfirmed.emit(this.selectedFilters);
   }
 }

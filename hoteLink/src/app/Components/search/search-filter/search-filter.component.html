@@ -1,0 +1,9 @@
+<div class="container">
+  <app-search-filter-text
+    (searchTextChanged)="updateSearchText($event)">
+  </app-search-filter-text>
+
+  <app-search-filter-categories
+    (selectedCategoriesChanged)="updateCategories($event)">
+  </app-search-filter-categories>
+</div>

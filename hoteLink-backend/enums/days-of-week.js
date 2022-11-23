@@ -5,7 +5,7 @@ const DaysOfWeek = {
   Thursday : 'Thursday',
   Friday : 'Friday',
   Saturday : 'Saturday',
-  Sunday : 'sunday'
+  Sunday : 'Sunday'
 }
 
 module.exports = DaysOfWeek;
