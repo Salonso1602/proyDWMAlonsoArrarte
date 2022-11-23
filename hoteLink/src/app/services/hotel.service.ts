@@ -12,22 +12,7 @@ export class HotelService {
   url = `${environment.apiBaseUrl}/hotels`
 
   allHotels?: IHotel[];
-  selectedHotel$ = new BehaviorSubject<IHotel | undefined>(
-    {
-      id: '0',
-      name : 'messihotel',
-      location : {
-        id: '0',
-        name : 'messicasa',
-        longDescription: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-        shortDescription: 'cortaDesc'
-        },
-      address : 'avitalia',
-      attentionHours : '18',
-      contactInfo : '032193129132',
-      longDescription: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-      shortDescription: 'cortaDesc'
-    });
+  selectedHotel$ = new BehaviorSubject<IHotel | undefined>(undefined);
 
   constructor(
     private http: HttpClient,
