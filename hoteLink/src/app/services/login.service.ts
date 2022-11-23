@@ -12,20 +12,16 @@ export class LoginService {
 
   url = 'http://localhost:3000/auth/login';
 
-  constructor(private http: HttpClient, private hs : HotelService) { }
+  constructor(private http: HttpClient, private hs: HotelService) { }
 
-  authUser(email: string, password: string) : Promise<ikey | undefined> {
-    return firstValueFrom(this.hs.selectedHotel$).then( hotel => {
-      let response;
-      this.http.post<ikey>(this.url, {email, password, hotel})
-        .pipe(
-            tap(resp => {
-              this.setSession(resp);
-              response = resp;
-            })
-        );
-      return response;
-    })
+  authUser(email: string, password: string): Observable<ikey> {
+    const hotel = this.hs.selectedHotel$.value
+    return this.http.post<ikey>(this.url, { email, password, hotel })
+      .pipe(
+        tap(resp => {
+          this.setSession(resp);
+        })
+      );
   }
 
 

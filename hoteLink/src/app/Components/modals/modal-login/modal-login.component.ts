@@ -25,11 +25,11 @@ export class ModalLoginComponent implements OnInit {
   login(){
     const ctrls = this.profileForm.value;
     if(ctrls.email && ctrls.password){
-    this.lg.authUser(ctrls.email, ctrls.password).then(result => {
-      if(result){
-        return true;
+    this.lg.authUser(ctrls.email, ctrls.password).subscribe(key =>{
+      if(!key){
+        this.triedLogin = true;
       } else{
-        return false;
+        this.triedLogin = false;
       }
     })
     }

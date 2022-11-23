@@ -18,8 +18,8 @@ export class HotelService {
   ) {
     this.http.get<IHotel[]>(`http://localhost:3000/hotels`)
       .pipe(
-        tap(hotels => this.selectedHotel$.next(hotels[0])),
-        tap(hotels => this.allHotels = hotels)
+        tap(hotels => this.allHotels = hotels),
+        tap(hotels => this.selectedHotel$.next(hotels[0]))
       );
   }
 
