@@ -4,19 +4,19 @@ import { IUser } from '@interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import * as moment from "moment";
 import { HotelService } from './hotel.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  url = 'http://localhost:3000/auth/login';
+  url = `${environment.apiBaseUrl}/auth/login`
 
   constructor(private http: HttpClient, private hs: HotelService) { }
 
   authUser(email: string, password: string): Observable<ikey> {
-    const hotel = this.hs.selectedHotel$.value
-    return this.http.post<ikey>(this.url, { email, password, hotel })
+    return this.http.post<ikey>(this.url, { email, password })
       .pipe(
         tap(resp => {
           this.setSession(resp);
