@@ -38,6 +38,7 @@ import { SearchFilterCategoriesComponent } from './Components/search/search-filt
 import { BookablesListComponent } from './Components/booking/bookables-list/bookables-list.component';
 import { BookableTypePipe } from './pipes/bookable-type.pipe';
 import { IdTokenInterceptor } from './interceptors/id-token.interceptor';
+import { HotelPersistanceInterceptor } from './interceptors/hotel-persistance';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,6 @@ import { IdTokenInterceptor } from './interceptors/id-token.interceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
   ],
   providers: [
     {
@@ -89,6 +89,11 @@ import { IdTokenInterceptor } from './interceptors/id-token.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: IdTokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HotelPersistanceInterceptor,
       multi: true
     }
   ],
