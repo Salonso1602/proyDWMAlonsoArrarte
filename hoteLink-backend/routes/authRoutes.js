@@ -5,7 +5,7 @@ const authBL = require('../businessLogic/authBL');
 //auth login
 router.post('/login', async function(req, res, next) {
     let jwt;
-
+    
     try{
         jwt = await authBL.generateToken(req.body.email, req.body.password);
     } catch(err){

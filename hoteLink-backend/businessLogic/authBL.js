@@ -24,7 +24,7 @@ module.exports = {
             const jwtToken = jwt.sign({}, PRIVATE_KEY, {
                 algorithm : 'RS256',
                 expiresIn : expireTime,
-                subject : wantedUser.id
+                subject :  wantedUser.id,
             })
             return {
                 token : jwtToken,
