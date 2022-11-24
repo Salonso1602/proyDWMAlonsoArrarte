@@ -49,6 +49,14 @@ Object.entries(v1).forEach(([key, value]) => {
   v1[key] = `/api/v1/${value}`;
 });
 
+app.use(helmet());
+app.use(logger('combined'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(cors());
+
 app.use(v1.activityRoutes, activityRoutes);
 app.use(v1.authRoutes, authRoutes);
 app.use(v1.customersRoutes, customersRoutes);

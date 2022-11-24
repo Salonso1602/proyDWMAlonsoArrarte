@@ -1,6 +1,7 @@
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
+const bcrypt = require('bcrypt');
 const authDA = require('../dataAccess/authDA')
 
 const PRIVATE_KEY = fs.readFileSync('./keys/rsa_private.pem');
@@ -14,7 +15,7 @@ const checkAuth = expressJwt.expressjwt({
 });
 
 module.exports = {
-    generateToken : async (email, passwd) =>{
+    generateToken : async (email, password) =>{
         const wantedUser = await authDA.getUserByEmail(email);
 
         if(!wantedUser){
@@ -26,13 +27,15 @@ module.exports = {
                 expiresIn : expireTime,
                 subject :  wantedUser.id,
             })
-            return {
-                token : jwtToken,
-                expiresIn : expireTime
-            };
-        } else{
-            return undefined;
-        }
+        };
+
+        return result;
+
+        // if(bcrypt.hash(password, BCRYPT_ROUNDS) === wantedUser.password){
+        //     ;
+        // } else{
+        //     return undefined;
+        // }
     },
     checkAuth
 }
