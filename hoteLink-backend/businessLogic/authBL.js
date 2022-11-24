@@ -15,21 +15,27 @@ const checkAuth = expressJwt.expressjwt({
 });
 
 module.exports = {
-    generateToken : async (email, password) =>{
+    generateToken : async (email, passwd) =>{
         const wantedUser = await authDA.getUserByEmail(email);
 
         if(!wantedUser){
             return undefined;
         }
-        if(passwd === wantedUser.password){
+        
+        if(bcrypt.compareSync(passwd, wantedUser.password)){
             const jwtToken = jwt.sign({}, PRIVATE_KEY, {
                 algorithm : 'RS256',
                 expiresIn : expireTime,
-                subject :  wantedUser.id,
+                subject :  wantedUser.id.toString(),
             })
-        };
-
-        return result;
+            return {
+                idToken: jwtToken,
+                expiresIn: expireTime
+            };
+        }
+        else {
+            return undefined;
+        }
 
         // if(bcrypt.hash(password, BCRYPT_ROUNDS) === wantedUser.password){
         //     ;

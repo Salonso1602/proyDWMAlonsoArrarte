@@ -24,7 +24,8 @@ module.exports = {
             const userDB = result[0];
             return new User({
                 id: userDB.id,
-                email: userDB.email
+                email: userDB.email,
+                password: userDB.password
             })
         }
     }
