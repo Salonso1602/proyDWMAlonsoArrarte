@@ -26,8 +26,16 @@ const app = express();
 
 app.use(init.setResponseAllowanceHeaders);
 
+app.use(helmet());
+app.use(logger('combined'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(cors());
+
 const v1 = {
-  activityRoutes: 'activity',
+  activityRoutes: 'activities',
   authRoutes: 'auth',
   customersRoutes: 'customers',
   eventRoutes: 'event',
@@ -50,13 +58,5 @@ app.use(v1.imagesRoutes, imagesRoutes);
 app.use(v1.newsRoutes, newsRoutes);
 app.use(v1.restaurantRoutes, restaurantRoutes);
 app.use(v1.servicesRoutes, servicesRoutes);
-
-app.use(helmet());
-app.use(logger('combined'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(cors());
 
 module.exports = app;

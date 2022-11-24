@@ -1,19 +1,14 @@
 const Food = require('../entities/dish');
-const foodDA = require('../db/dataAccess/foodDA');
+const foodDA = require('../dataAccess/foodDA');
 
 module.exports = {
-    getAllFoods :  async () => {
-        let result = [];
-
-        const queryRes = await foodDA.getAllEvents();
-        if(queryRes.length === 0){
+    getAllFoods :  async (queryParams) => {
+        const resultDA = await foodDA.getAllFoods(queryParams);
+        if(resultDA.length === 0){
             return undefined;
         }
         else{
-            queryRes.forEach(fod => {
-                result.push(new Food(fod.id, fod.name, fod.description, fod.price, fod.serviceTime));
-            });
-            return result;
+            return resultDA;
         }
     },
 }

@@ -1,19 +1,14 @@
 const News = require('../entities/news');
-const newsDA = require('../db/dataAccess/newsDA');
+const newsDA = require('../dataAccess/newsDA');
 
 module.exports = {
-    getAllFoods :  async () => {
-        let result = [];
-
-        const queryRes = await newsDA.getAllNews();
-        if(queryRes.length === 0){
+    getNews :  async (hotelId) => {
+        const resultDA = await newsDA.getAllNews(hotelId);
+        if(resultDA.length === 0){
             return undefined;
         }
         else{
-            queryRes.forEach(elem => {
-                result.push(new News(elem.subject, elem.type, elem.caption, elem.imageId))
-            });
-            return result;
+            return resultDA;
         }
     },
 }

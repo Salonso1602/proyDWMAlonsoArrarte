@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-const newsBL = require('../businessLogic(newsBL');
+const newsBL = require('../businessLogic/newsBL');
 
 router.get('/', async function(req, res, next) {
     let result;
 
     try{
-        result = await newsBL.getNews();
+        result = await newsBL.getNews(req.query.hotelId);
     }catch(err){
         console.error(err.message);
         res.status(500).json({message : 'Error interno del Server'});

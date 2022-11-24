@@ -37,6 +37,8 @@ import { SearchFilterTextComponent } from './Components/search/search-filter/sea
 import { SearchFilterCategoriesComponent } from './Components/search/search-filter/search-filter-categories/search-filter-categories.component';
 import { BookablesListComponent } from './Components/booking/bookables-list/bookables-list.component';
 import { BookableTypePipe } from './pipes/bookable-type.pipe';
+import { IdTokenInterceptor } from './interceptors/id-token.interceptor';
+import { HotelPersistanceInterceptor } from './interceptors/hotel-persistance';
 
 @NgModule({
   declarations: [
@@ -77,12 +79,21 @@ import { BookableTypePipe } from './pipes/bookable-type.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseDateTransformInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: IdTokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HotelPersistanceInterceptor,
       multi: true
     }
   ],

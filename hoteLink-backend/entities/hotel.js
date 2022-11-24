@@ -8,7 +8,7 @@ module.exports = class Hotel {
     longDescription
     shortDescription
 
-    constructor(id, name, location, address, contactInfo, attentionHours, longDescription, shortDescription) {
+    constructor({id, name, location, address, contactInfo, attentionHours, longDescription, shortDescription}) {
         this.id = id
         this.name = name
         this.location = location

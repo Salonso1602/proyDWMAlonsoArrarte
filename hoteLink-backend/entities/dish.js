@@ -5,7 +5,7 @@ module.exports = class Dish {
   price
   serviceTime
 
-  constructor(id, name, description, price, serviceTime){
+  constructor({id, name, description, price, serviceTime}){
     this.id = id;
     this.name = name;
     this.description = description;

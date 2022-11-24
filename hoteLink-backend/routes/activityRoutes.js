@@ -7,7 +7,7 @@ router.get('/', async function(req, res, next) {
     let result;
 
     try{
-        result = await activityBL.getAllActivities();
+        result = await activityBL.getAllActivities(req.query);
     }catch(err){
         console.error(err.message);
         res.status(500).json({message : 'Error interno del Server'});
@@ -67,10 +67,15 @@ router.post('/:id/questions', async function(req, res, next) {
         res.status(500).json({message : 'No se pudo subir la consulta'});
         return;
     }
-    if(!result){
+    if(result === undefined){
         res.status(404).json({message : 'No existe esa actividad'}); 
     } else{
-        res.sendStatus(200);
+        if(result === true){
+            res.sendStatus(200);   
+        } else{
+            res.status(500).json({message : 'No se pudo subir la consulta'});
+        }
+        
     }
 });
 
@@ -79,23 +84,27 @@ router.post('/:id/book', async function(req, res, next) {
     let result;
 
     try{
-        result = await activityBL.bookActivity(req.params.id, req.body.userId);
+        result = await activityBL.bookActivity(req.params.actId, req.body.userId, req.body.amountPeople, req.body.finalPrice);
     }
     catch(err){
         console.error(err.message);
         res.status(500).json({message : 'No se pudo hacer la reserva'});
         return;
     }
-    if(!result){
+    if(result === undefined){
         res.status(404).json({message : 'No existe esa actividad'}); 
     } else{
-        res.sendStatus(200);
+        if(result === true){
+            res.sendStatus(200);   
+        } else{
+            res.status(500).json({message : 'No se pudo concretar la reserva'});
+        }
     }
 });
 
 //DESIRABLE: cancel activity reservation
 router.post('/:id/cancel', async function(req, res, next) {
-
+    res.sendStatus(404);
 });
 
 module.exports = router;
