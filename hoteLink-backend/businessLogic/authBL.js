@@ -36,12 +36,6 @@ module.exports = {
         else {
             return undefined;
         }
-
-        // if(bcrypt.hash(password, BCRYPT_ROUNDS) === wantedUser.password){
-        //     ;
-        // } else{
-        //     return undefined;
-        // }
     },
     checkAuth
 }
