@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ICategory } from '@interfaces/category';
 import { categoryTypes } from '@enums/categoryTypes';
 import { HttpClient } from '@angular/common/http';

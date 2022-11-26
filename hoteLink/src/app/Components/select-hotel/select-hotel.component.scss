@@ -1,0 +1,43 @@
+.btn-primary{
+    background-color: var(--mainColor);
+    border-color: var(--mainColor);
+    width: 100%;
+}
+
+.container{
+    max-width: 800px;
+}
+
+.card {
+    padding: .5rem;
+    border-radius: 15px;
+    box-shadow: .2rem .3rem .5rem rgba(black, .7);
+    transition: all .2s ease-out;
+    margin-bottom: 3rem;
+    border-style: outset ;
+    border-radius: 1em;
+    border-width:   0.1rem;
+    background-color: rgb(238, 237, 237);
+
+    &:hover {
+        box-shadow: .2rem .3rem 1rem rgba(black, .7);
+        translate: 0 -.5rem;
+        text-decoration: none !important;
+    }
+}
+
+span{
+    font-style: italic;
+}
+.card>h1{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.3rem;
+    margin-bottom: 0;
+}
+
+svg{
+    vertical-align: text-top;
+    width: 1em;
+    height: 1em;
+}
