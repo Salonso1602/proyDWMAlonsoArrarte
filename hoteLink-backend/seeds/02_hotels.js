@@ -12,6 +12,7 @@ exports.seed = async function(knex) {
       id: 1,
       name: 'Duncan Hill Hotel',
       locationId: 1,
+      address: 'Av. Sarmiento 1234',
       attentionHours: '6:00 AM - 12:00 AM',
       contactInfo: 'Phone: 555-555-5555',
       shortDescription: 'The short description for Duncan Hill Hotel',
