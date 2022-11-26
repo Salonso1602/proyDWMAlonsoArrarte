@@ -39,6 +39,7 @@ import { BookablesListComponent } from './Components/booking/bookables-list/book
 import { BookableTypePipe } from './pipes/bookable-type.pipe';
 import { IdTokenInterceptor } from './interceptors/id-token.interceptor';
 import { HotelPersistanceInterceptor } from './interceptors/hotel-persistance';
+import { SelectHotelComponent } from './Components/select-hotel/select-hotel.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { HotelPersistanceInterceptor } from './interceptors/hotel-persistance';
     SearchFilterTextComponent,
     SearchFilterCategoriesComponent,
     BookablesListComponent,
-    BookableTypePipe
+    BookableTypePipe,
+    SelectHotelComponent
   ],
   imports: [
     BrowserModule,
