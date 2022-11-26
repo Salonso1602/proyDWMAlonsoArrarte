@@ -1,13 +1,13 @@
 const Bookable = require('./bookable')
 
 module.exports = class Activity extends Bookable {
-  monthlyPrice
+  weeklyPrice
   timesOfActivity
 
-  constructor ({id, name, place, monthlyPrice, timesOfActivity}){
+  constructor ({id, name, place, weeklyPrice, timesOfActivity}){
     super({id, name, place});
 
-    this.monthlyPrice = monthlyPrice;
+    this.weeklyPrice = weeklyPrice;
     this.timesOfActivity = timesOfActivity;
   }
 }

@@ -9,7 +9,7 @@ router.get('/', async function(req, res, next) {
     try{
         result = await activityBL.getAllActivities(req.query);
     }catch(err){
-        console.error(err.message);
+        console.error(err);
         res.status(500).json({message : 'Error interno del Server'});
         return;
     }
@@ -27,7 +27,7 @@ router.get('/:id', async function(req, res, next) {
     try{
         result = await activityBL.getActivityById(req.params.id);
     }catch(err){
-        console.error(err.message);
+        console.error(err);
         res.status(500).json({message : 'Error interno del Server'});
         return;
     }
@@ -71,7 +71,7 @@ router.post('/:id/questions', async function(req, res, next) {
         res.status(404).json({message : 'No existe esa actividad'}); 
     } else{
         if(result === true){
-            res.sendStatus(200);   
+            res.sendStatus(201);   
         } else{
             res.status(500).json({message : 'No se pudo subir la consulta'});
         }

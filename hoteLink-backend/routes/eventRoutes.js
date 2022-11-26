@@ -10,7 +10,7 @@ router.get('/', async function(req, res, next) {
     try{
         result = await eventBL.getAllEvents(req.query);
     }catch(err){
-        console.error(err.message);
+        console.error(err);
         res.status(500).json({message : 'Error interno del Server'});
         return;
     }
@@ -28,7 +28,7 @@ router.get('/:id', async function(req, res, next) {
     try{
         result = await eventBL.getEventById(req.params.id);
     }catch(err){
-        console.error(err.message);
+        console.error(err);
         res.status(500).json({message : 'Error interno del Server'});
         return;
     }
@@ -46,7 +46,7 @@ router.get('/:id/availability', async function(req, res, next) {
     try{
         result = await eventBL.getSchedule(req.params.id);
     }catch(err){
-        console.error(err.message);
+        console.error(err);
         res.status(500).json({message : 'Error interno del Server'});
         return;
     }
@@ -64,7 +64,7 @@ router.post('/:id/questions', async function(req, res, next) {
     try{
         result = await eventBL.addQuestion(req.params.id,req.body.question);
     }catch(err){
-        console.error(err.message);
+        console.error(err);
         res.status(500).json({message : 'No se pudo subir la consulta'});
         return;
     }
@@ -87,7 +87,7 @@ router.post('/:id/book', async function(req, res, next) {
         result = await eventBL.bookEvent(req.params.actId, req.body.userId, req.body.amountPeople, req.body.finalPrice);
     }
     catch(err){
-        console.error(err.message);
+        console.error(err);
         res.status(500).json({message : 'No se pudo hacer la reserva'});
         return;
     }

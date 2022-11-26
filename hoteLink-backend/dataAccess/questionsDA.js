@@ -1,5 +1,22 @@
+const knex = require('../db/conn');
+
+const tables = require('../db/tables');
+const Question = require('../entities/question');
+const UnknownDbError = require('./errors/unknown-db');
+
 module.exports = {
-    insertQuestion : async (id, questionTxt) => {
-        //si se logra insertar retorna true, si falla false, undefined si no existe el id del activity/event
+    insertQuestion : async (question) => {
+        let result;
+        try {
+            result = await knex(tables.QUESTION).insert({
+                userId: question.userId,
+                bookableId: question.bookableId,
+                question: question.question
+            });
+        }
+        catch (error) {
+            throw new UnknownDbError(tables.QUESTION, error);
+        }
+        return !!result;
     }
 }

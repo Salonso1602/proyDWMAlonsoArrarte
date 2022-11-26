@@ -2,6 +2,7 @@ const Activity = require('../entities/activity');
 const activityDA = require('../dataAccess/activityDA');
 const questionsDA = require('../dataAccess/questionsDA');
 const bookingsDA = require('../dataAccess/bookingsDA');
+const Question = require('../entities/question');
 
 module.exports = {
     getAllActivities: async (queryParams) => {
@@ -33,7 +34,12 @@ module.exports = {
         }
     },
     addQuestion: async (wantedId, questionText) => {
-        const resultDA = await questionsDA.insertQuestion(wantedId, questionText);
+        const question = new Question({
+            userId: 1,
+            bookableId: wantedId,
+            question: questionText
+        })
+        const resultDA = await questionsDA.insertQuestion(question);
         if(resultDA === true || resultDA === false){
             return resultDA;
         } else {

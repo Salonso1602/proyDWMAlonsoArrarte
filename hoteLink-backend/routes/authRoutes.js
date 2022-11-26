@@ -16,7 +16,7 @@ router.post('/login', async function(req, res, next) {
     if(!jwt){
         res.sendStatus(401);
     } else{
-        res.status(200).json({idToken : jwt.token, expiresIn : jwt.expiresIn});
+        res.status(200).json(jwt);
     }
 });
 

@@ -11,7 +11,6 @@ exports.seed = async function(knex) {
   await knex(tables.ACTIVITY).del();
   await knex(tables.EVENT).del();
   await knex(tables.BOOKABLE_AVAILABILITY_PER_HOTEL).del();
-  await knex(tables.BOOKABLE_IN_NEWS).del();
   await knex(tables.BOOKABLE).del();
 
   await knex(tables.BOOKABLE).insert([
@@ -38,20 +37,10 @@ exports.seed = async function(knex) {
       hotelId: 1
     }
   ]);
-  await knex(tables.BOOKABLE_IN_NEWS).insert([
-    {
-      bookableId: 1,
-      newsId: 1
-    },
-    {
-      bookableId: 2,
-      newsId: 2
-    }
-  ]);
   await knex(tables.EVENT).insert([
     {
       bookableId: 1,
-      date: new Date(2022, 12, 16, 9, 0),
+      date: new Date(2022, 11, 16, 9, 0),
       entranceFee: 25
     }
   ]);
@@ -66,15 +55,15 @@ exports.seed = async function(knex) {
       id: 1,
       activityId: 2,
       dayOfWeek: dayOfWeek.Monday,
-      startTime: new Date(2000, 1, 1, 16, 0),
-      endTime: new Date(2000, 1, 1, 17, 0)
+      startTime: new Date(2000, 0, 1, 16, 0),
+      endTime: new Date(2000, 0, 1, 17, 0)
     },
     {
       id: 2,
       activityId: 2,
       dayOfWeek: dayOfWeek.Thursday,
-      startTime: new Date(2000, 1, 1, 18, 0),
-      endTime: new Date(2000, 1, 1, 19, 0)
+      startTime: new Date(2000, 0, 1, 18, 0),
+      endTime: new Date(2000, 0, 1, 19, 0)
     }
   ]);
 };

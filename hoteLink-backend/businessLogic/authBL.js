@@ -1,6 +1,7 @@
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
+const bcrypt = require('bcrypt');
 const authDA = require('../dataAccess/authDA')
 
 const PRIVATE_KEY = fs.readFileSync('./keys/rsa_private.pem');
@@ -20,17 +21,19 @@ module.exports = {
         if(!wantedUser){
             return undefined;
         }
-        if(passwd === wantedUser.password){
+        
+        if(bcrypt.compareSync(passwd, wantedUser.password)){
             const jwtToken = jwt.sign({}, PRIVATE_KEY, {
                 algorithm : 'RS256',
                 expiresIn : expireTime,
-                subject :  wantedUser.id,
+                subject :  wantedUser.id.toString(),
             })
             return {
-                token : jwtToken,
-                expiresIn : expireTime
+                idToken: jwtToken,
+                expiresIn: expireTime
             };
-        } else{
+        }
+        else {
             return undefined;
         }
     },

@@ -1,4 +1,5 @@
 const tables = require('../db/tables');
+const bcrypt = require('bcrypt');
 
 /**
  * @param { import("knex").Knex } knex
@@ -11,8 +12,7 @@ exports.seed = async function(knex) {
     {
       id: 1,
       email: 'user1@yopmail.com',
-      // Hash Bcrypt de 12 rondas para '1234'
-      password: '$2a$12$D2CkIx/GI1ZFj0VOkklqrOl9EIdW27L5yUL/tlYbGLCUsesJv2GJ2'
+      password: bcrypt.hashSync('1234', 12),
     }
   ]);
 };
