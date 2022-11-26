@@ -8,55 +8,67 @@ import { MoreInfoCardComponent } from '@components/moreInfo/more-info-card/more-
 import { RequestServicesComponent } from '@components/request-services/request-services.component';
 import { RestaurantComponent } from '@components/restaurant/restaurant.component';
 import { BookablesListComponent } from '@components/booking/bookables-list/bookables-list.component';
+import { NeedsSelectedHotel } from './guards/needs-selected-hotel.service';
+import { SelectHotelComponent } from '@components/select-hotel/select-hotel.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    component: SelectHotelComponent
   },
   {
     path: 'home',
+    canActivate : [NeedsSelectedHotel],
     component: NewsListComponent
   },
   {
     path: 'aboutUs',
+    canActivate : [NeedsSelectedHotel],
     component: MoreInfoCardComponent
   },
   {
     path: 'requestService',
+    canActivate : [NeedsSelectedHotel],
     component: RequestServicesComponent
   },
   {
     path: 'event/:id/details',
+    canActivate : [NeedsSelectedHotel],
     component: BookableDetailsComponent
   },
   {
     path: 'activity/:id/details',
+    canActivate : [NeedsSelectedHotel],
     component: BookableDetailsComponent
   },
   {
     path: 'hotel/:id/details',
+    canActivate : [NeedsSelectedHotel],
     component: MoreInfoDetailsComponent
   },
   {
     path: 'location/:id/details',
+    canActivate : [NeedsSelectedHotel],
     component: MoreInfoDetailsComponent
   },
   {
     path: 'activity/:id/booking',
+    canActivate : [NeedsSelectedHotel],
     component: BookingComponent
   },
   {
     path: 'event/:id/booking',
+    canActivate : [NeedsSelectedHotel],
     component: BookingComponent
   },
   {
     path: 'restaurant',
+    canActivate : [NeedsSelectedHotel],
     component: RestaurantComponent
   },
   {
     path: 'activitiesAndEvents',
+    canActivate : [NeedsSelectedHotel],
     component: BookablesListComponent
   }
 ];

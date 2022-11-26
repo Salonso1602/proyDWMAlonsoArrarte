@@ -38,4 +38,6 @@ export class HotelService {
       this.selectHotel(hotel);
     })
   }
+
+  hasSelectedHotel = localStorage.getItem('hotel_id') !== null;
 }

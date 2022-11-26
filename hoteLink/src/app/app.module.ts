@@ -40,6 +40,7 @@ import { BookableTypePipe } from './pipes/bookable-type.pipe';
 import { IdTokenInterceptor } from './interceptors/id-token.interceptor';
 import { HotelPersistanceInterceptor } from './interceptors/hotel-persistance';
 import { SelectHotelComponent } from './Components/select-hotel/select-hotel.component';
+import { NeedsSelectedHotel } from './guards/needs-selected-hotel.service';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { SelectHotelComponent } from './Components/select-hotel/select-hotel.com
       provide: HTTP_INTERCEPTORS,
       useClass: HotelPersistanceInterceptor,
       multi: true
-    }
+    },
+    NeedsSelectedHotel
   ],
   bootstrap: [AppComponent]
 })
