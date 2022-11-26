@@ -30,8 +30,11 @@ module.exports = {
                     tables.BOOKABLE + '.id',
                     tables.BOOKABLE + '.name',
                     tables.BOOKABLE + '.place',
+                    tables.ACTIVITY + '.weeklyPrice',
                     tables.ACTIVITY + '.bookableId as activityId',
                     tables.EVENT + '.bookableId as eventId',
+                    tables.EVENT + '.date',
+                    tables.EVENT + '.entranceFee',
                     tables.BOOKABLE_IN_NEWS + '.newsId'
                 )
                 .from(tables.BOOKABLE)
