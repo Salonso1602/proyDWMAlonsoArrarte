@@ -16,6 +16,7 @@ export class SelectHotelComponent implements OnInit {
 
   ngOnInit(): void {
     this.hs.getAllHotels().subscribe(allHotels => this.hotels = allHotels);
+    this.hs.clearSelectedHotel();
   }
 
   selectHotel(hotelid : string){

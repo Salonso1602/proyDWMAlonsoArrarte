@@ -37,7 +37,6 @@ export class HotelService {
     return this.http.get<IHotel>(this.url + '/' + hotelId).pipe(
       tap(hotel =>{ this.selectHotel(hotel) 
       localStorage.setItem('hotel_id', hotel.id)}))
-
   }
 
   clearSelectedHotel(){
