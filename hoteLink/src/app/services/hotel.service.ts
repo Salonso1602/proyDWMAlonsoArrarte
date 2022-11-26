@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IHotel } from '@interfaces/hotel';
 import { IlittleHotel } from '@interfaces/IlittleHotel';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -33,10 +33,16 @@ export class HotelService {
     return this.http.get<IlittleHotel[]>(this.url);
   }
 
-  getAndSelectHotel(hotelId : string){
-    this.http.get<IHotel>(this.url + '/' + hotelId).subscribe(hotel =>{
-      this.selectHotel(hotel);
-    })
+  getAndSelectHotel(hotelId : string) : Observable<IHotel>{
+    return this.http.get<IHotel>(this.url + '/' + hotelId).pipe(
+      tap(hotel =>{ this.selectHotel(hotel) 
+      localStorage.setItem('hotel_id', hotel.id)}))
+
+  }
+
+  clearSelectedHotel(){
+    localStorage.removeItem('hotel_id');
+    this.selectedHotel$.next(undefined);
   }
 
   hasSelectedHotel = localStorage.getItem('hotel_id') !== null;

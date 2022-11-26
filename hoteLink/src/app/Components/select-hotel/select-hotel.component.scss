@@ -8,9 +8,20 @@
     max-width: 800px;
 }
 
-hr{
-    margin-bottom: 5em;
-}
-select{
-    margin-bottom: 8em;
+.card {
+    padding: .5rem;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    box-shadow: .2rem .3rem .5rem rgba(black, .7);
+    transition: all .2s ease-out;
+    margin-bottom: 5rem;
+    border-style: outset ;
+    border-radius: 1em;
+    border-width:   0.1rem;
+
+    &:hover {
+        box-shadow: .2rem .3rem 1rem rgba(black, .7);
+        translate: 0 -.5rem;
+        text-decoration: none !important;
+    }
 }

@@ -1,4 +1,5 @@
 export interface IlittleHotel {
     hotelId: string,
-    hotelName : string
+    hotelName : string,
+    locationName : string
 }

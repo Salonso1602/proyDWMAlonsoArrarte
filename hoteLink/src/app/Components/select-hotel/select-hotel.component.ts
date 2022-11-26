@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { IHotel } from '@interfaces/hotel';
+import { Router } from '@angular/router';
 import { IlittleHotel } from '@interfaces/IlittleHotel';
 import { HotelService } from '@services/hotel.service';
 
@@ -13,17 +12,17 @@ export class SelectHotelComponent implements OnInit {
 
   hotels? : IlittleHotel[];
 
-  hotelForm = new FormControl('', Validators.required)
-
-  constructor(private hs : HotelService, private fb : FormBuilder) { }
+  constructor(private hs : HotelService, private router : Router) { }
 
   ngOnInit(): void {
     this.hs.getAllHotels().subscribe(allHotels => this.hotels = allHotels);
   }
 
-  selectHotel(){
-    if(this.hotelForm.value){
-    this.hs.getAndSelectHotel(this.hotelForm.value);}
+  selectHotel(hotelid : string){
+    this.hs.getAndSelectHotel(hotelid).subscribe(
+      hotel => this.router.navigate(['/home'])
+    )
+
   }
 
 }

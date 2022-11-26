@@ -10,18 +10,12 @@
         <div class="col col-12">
             <p class="text-center">Elije que hotel que quieres explorar:</p>
         </div>
-        <div class="col col-12">
-            <div class="form-floating">
-                <select id="select" class="form-select" [formControl]="hotelForm">
-                    <option type="text" *ngFor="let hotel of hotels" value="{{hotel.hotelId}}"
-                        (change)="this.hotelForm.setValue(hotel.hotelId)">{{hotel.hotelName}}
-                    </option>
-                </select>
-                <label for="select" placeholder="">Quiero ver más de...</label>
-            </div>
-        </div>
-        <div class="col col-12">
-            <button class="btn btn-lg btn-primary" [disabled]="!this.hotelForm.valid" (click)="selectHotel()">Seleccionar</button>
+        <div class="col-md-6" *ngFor="let hotel of this.hotels">
+                <div class="card" (click)="selectHotel(hotel.hotelId)" [routerLink]="['home']">
+                    <h2>{{hotel.hotelName}}</h2>
+                    <hr>
+                    <span>{{ hotel.locationName }}</span>
+                </div>
         </div>
     </div>
 </div>
