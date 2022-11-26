@@ -13,6 +13,9 @@ const InconsistentDataError = require('./errors/inconsistent-data');
 module.exports = {
     getAllNews : async (hotelId) => {
         let resultDB;
+        
+        const dishesInNewsSubqueryName = 'dishesInNews';
+        const bookablesInNewsSubqueryName = 'bookablesInNews';
         try {
             const dishesInNews = knex(tables.DISH_IN_NEWS)
                 .innerJoin(
@@ -20,7 +23,7 @@ module.exports = {
                     tables.DISH_IN_NEWS + '.dishId',
                     tables.DISH + '.id'
                 )
-                .as('dishesInNews');
+                .as(dishesInNewsSubqueryName);
 
             const bookablesInNews = knex.queryBuilder()
                 .select(
@@ -28,9 +31,15 @@ module.exports = {
                     tables.BOOKABLE + '.name',
                     tables.BOOKABLE + '.place',
                     tables.ACTIVITY + '.bookableId as activityId',
-                    tables.EVENT + '.bookableId as eventId'
+                    tables.EVENT + '.bookableId as eventId',
+                    tables.BOOKABLE_IN_NEWS + '.newsId'
                 )
                 .from(tables.BOOKABLE)
+                .innerJoin(
+                    tables.BOOKABLE_IN_NEWS,
+                    tables.BOOKABLE + '.id',
+                    tables.BOOKABLE_IN_NEWS + '.bookableId'
+                )
                 .leftJoin(
                     tables.ACTIVITY,
                     tables.ACTIVITY + '.bookableId',
@@ -41,7 +50,7 @@ module.exports = {
                     tables.EVENT + '.bookableId',
                     tables.BOOKABLE + '.id'
                 )
-                .as('bookablesInNews');
+                .as(bookablesInNewsSubqueryName);
 
             resultDB = await knex(tables.NEWS_IN_HOTEL)
                 .where('hotelId', hotelId)
@@ -52,12 +61,12 @@ module.exports = {
                 )
                 .leftJoin(
                     dishesInNews,
-                    dishesInNews._single.as + '.newsId',
+                    dishesInNewsSubqueryName + '.newsId',
                     tables.NEWS + '.id'
                 )
                 .leftJoin(
                     bookablesInNews,
-                    dishesInNews._single.as + '.newsId',
+                    bookablesInNewsSubqueryName + '.newsId',
                     tables.NEWS + '.id'
                 )
                 .orderBy(tables.NEWS + '.id', 'desc')
@@ -72,9 +81,9 @@ module.exports = {
                 subject: undefined,
                 caption: dbRow[tables.NEWS].caption,
                 imageId: dbRow[tables.NEWS].imageId,
-                type: Object.entries(dbRow[tables.DISH_IN_NEWS]).length
+                type: dbRow[dishesInNewsSubqueryName].id !== null
                     ? newsTypes.Food
-                    : Object.entries(dbRow[tables.ACTIVITY]).length
+                    : dbRow[bookablesInNewsSubqueryName].activityId !== null
                         ? newsTypes.Activity
                         : newsTypes.Event,
             }
@@ -82,29 +91,29 @@ module.exports = {
             switch (newsObject.type) {
                 case newsTypes.Food:
                     newsObject.subject = new Dish({
-                        id: dbRow[tables.DISH].id,
-                        name: dbRow[tables.DISH].name,
-                        description: dbRow[tables.DISH].description,
-                        price: dbRow[tables.DISH].price,
-                        serviceTime: dbRow[tables.DISH].serviceTime,
+                        id: dbRow[dishesInNewsSubqueryName].id,
+                        name: dbRow[dishesInNewsSubqueryName].name,
+                        description: dbRow[dishesInNewsSubqueryName].description,
+                        price: dbRow[dishesInNewsSubqueryName].price,
+                        serviceTime: dbRow[dishesInNewsSubqueryName].serviceTime,
                     });
                     break;
                 case newsTypes.Activity:
                     newsObject.subject = new Activity({
-                        id: dbRow[tables.BOOKABLE].id,
-                        name: dbRow[tables.BOOKABLE].name,
-                        place: dbRow[tables.BOOKABLE].place,
-                        weeklyPrice: dbRow[tables.ACTIVITY].weeklyPrice,
+                        id: dbRow[bookablesInNewsSubqueryName].id,
+                        name: dbRow[bookablesInNewsSubqueryName].name,
+                        place: dbRow[bookablesInNewsSubqueryName].place,
+                        weeklyPrice: dbRow[bookablesInNewsSubqueryName].weeklyPrice,
                         timesOfActivity: undefined
                     });
                     break;
                 case newsTypes.Event:
                     newsObject.subject = new Event({
-                        id: dbRow[tables.BOOKABLE].id,
-                        name: dbRow[tables.BOOKABLE].name,
-                        place: dbRow[tables.BOOKABLE].place,
-                        date: dbRow[tables.EVENT].date,
-                        entranceFee: dbRow[tables.EVENT].entranceFee
+                        id: dbRow[bookablesInNewsSubqueryName].id,
+                        name: dbRow[bookablesInNewsSubqueryName].name,
+                        place: dbRow[bookablesInNewsSubqueryName].place,
+                        date: dbRow[bookablesInNewsSubqueryName].date,
+                        entranceFee: dbRow[bookablesInNewsSubqueryName].entranceFee
                     });
                     break;
                 default:

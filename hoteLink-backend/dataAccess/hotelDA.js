@@ -11,8 +11,12 @@ module.exports = {
         let resultDB;
         try {
             resultDB = await knex
-                .select('id', 'name')
-                .from(tables.HOTEL);
+                .select(
+                    tables.HOTEL + '.id',
+                    tables.HOTEL + '.name',
+                    tables.LOCATION + '.name as locationName',)
+                .from(tables.HOTEL)
+                .innerJoin(tables.LOCATION);
         }
         catch (error) {
             throw new UnknownDbError(tables.HOTEL, error);

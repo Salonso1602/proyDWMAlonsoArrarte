@@ -11,7 +11,6 @@ exports.seed = async function(knex) {
   await knex(tables.ACTIVITY).del();
   await knex(tables.EVENT).del();
   await knex(tables.BOOKABLE_AVAILABILITY_PER_HOTEL).del();
-  await knex(tables.BOOKABLE_IN_NEWS).del();
   await knex(tables.BOOKABLE).del();
 
   await knex(tables.BOOKABLE).insert([
@@ -36,16 +35,6 @@ exports.seed = async function(knex) {
     {
       bookableId: 2,
       hotelId: 1
-    }
-  ]);
-  await knex(tables.BOOKABLE_IN_NEWS).insert([
-    {
-      bookableId: 1,
-      newsId: 1
-    },
-    {
-      bookableId: 2,
-      newsId: 2
     }
   ]);
   await knex(tables.EVENT).insert([

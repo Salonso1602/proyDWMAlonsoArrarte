@@ -8,7 +8,6 @@ exports.seed = async function(knex) {
   // Deletes ALL existing entries
   await knex(tables.DISH).del();
   await knex(tables.DISH_AVAILABILITY_PER_HOTEL).del();
-  await knex(tables.DISH_IN_NEWS).del();
 
   await knex(tables.DISH).insert([
     {
@@ -24,12 +23,6 @@ exports.seed = async function(knex) {
     {
       dishId: 1,
       hotelId: 1
-    }
-  ]);
-  await knex(tables.DISH_IN_NEWS).insert([
-    {
-      dishId: 1,
-      newsId: 3
     }
   ]);
 };

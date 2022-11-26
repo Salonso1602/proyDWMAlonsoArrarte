@@ -95,15 +95,17 @@ module.exports = {
                 id: dbRow[tables.BOOKABLE].id,
                 name: dbRow[tables.BOOKABLE].name,
                 place: dbRow[tables.BOOKABLE].place,
-                weeklyPrice: dbRow[tables.EVENT].weeklyPrice,
+                weeklyPrice: dbRow[tables.ACTIVITY].weeklyPrice,
                 timesOfActivity: 
-                    result.map(({startTime, endTime, dayOfWeek}) => {
-                        return {
-                            startTime,
-                            endTime,
-                            dayOfWeek
-                        };
-                    })
+                    result
+                        .map(dbRow => dbRow[tables.TIME_OF_ACTIVITY])
+                        .map(({startTime, endTime, dayOfWeek}) => {
+                            return {
+                                startTime,
+                                endTime,
+                                dayOfWeek
+                            };
+                        })
             });
         }
     },
