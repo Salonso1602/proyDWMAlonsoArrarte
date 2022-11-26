@@ -18,11 +18,10 @@ export class HotelService {
   constructor(
     private http: HttpClient,
   ) {
-    this.http.get<IHotel[]>(`http://localhost:3000/hotels`)
-      .pipe(
-        tap(hotels => this.allHotels = hotels),
-        tap(hotels => this.selectedHotel$.next(hotels[0]))
-      );
+    const hotelId = localStorage.getItem('hotel_id');
+    if(hotelId){
+      this.getAndSelectHotel(hotelId);
+    }
   }
 
   selectHotel(hotel: IHotel) {

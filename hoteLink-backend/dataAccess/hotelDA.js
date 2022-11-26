@@ -37,6 +37,6 @@ module.exports = {
             throw new UniqueNotFoundError(tables.HOTEL, { hotelId });
         }
 
-        return resultDB;
+        return resultDB[0];
     }
 }
