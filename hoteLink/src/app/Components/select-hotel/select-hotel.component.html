@@ -11,8 +11,8 @@
             <p class="text-center">Elije que hotel que quieres explorar:</p>
         </div>
         <div class="col-md-6" *ngFor="let hotel of this.hotels">
-                <div class="card" (click)="selectHotel(hotel.hotelId)" [routerLink]="['home']">
-                    <h1>{{hotel.hotelName}}</h1>
+                <div class="card" (click)="selectHotel(hotel.id)">
+                    <h1>{{hotel.name}}</h1>
                     <hr>
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
