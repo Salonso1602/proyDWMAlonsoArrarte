@@ -14,7 +14,7 @@ module.exports = {
         }
     },
     getEventById :  async (wantedId) => {
-        const resultDA = await eventDA.getEventWithId(wantedId);
+        const resultDA = await eventDA.getEventById(wantedId);
         if(!resultDA){
             return undefined;
         }

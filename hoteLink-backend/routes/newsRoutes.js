@@ -8,7 +8,7 @@ router.get('/', async function(req, res, next) {
     try{
         result = await newsBL.getNews(req.query.hotelId);
     }catch(err){
-        console.error(err.message);
+        console.error(err);
         res.status(500).json({message : 'Error interno del Server'});
         return;
     }

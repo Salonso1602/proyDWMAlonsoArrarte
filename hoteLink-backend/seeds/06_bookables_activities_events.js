@@ -51,7 +51,7 @@ exports.seed = async function(knex) {
   await knex(tables.EVENT).insert([
     {
       bookableId: 1,
-      date: new Date(2022, 12, 16, 9, 0),
+      date: new Date(2022, 11, 16, 9, 0),
       entranceFee: 25
     }
   ]);
@@ -66,15 +66,15 @@ exports.seed = async function(knex) {
       id: 1,
       activityId: 2,
       dayOfWeek: dayOfWeek.Monday,
-      startTime: new Date(2000, 1, 1, 16, 0),
-      endTime: new Date(2000, 1, 1, 17, 0)
+      startTime: new Date(2000, 0, 1, 16, 0),
+      endTime: new Date(2000, 0, 1, 17, 0)
     },
     {
       id: 2,
       activityId: 2,
       dayOfWeek: dayOfWeek.Thursday,
-      startTime: new Date(2000, 1, 1, 18, 0),
-      endTime: new Date(2000, 1, 1, 19, 0)
+      startTime: new Date(2000, 0, 1, 18, 0),
+      endTime: new Date(2000, 0, 1, 19, 0)
     }
   ]);
 };

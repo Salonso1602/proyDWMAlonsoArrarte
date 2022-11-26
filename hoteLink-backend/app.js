@@ -16,7 +16,7 @@ const activityRoutes = require('./routes/activityRoutes');
 const authRoutes = require('./routes/authRoutes');
 const customersRoutes = require('./routes/customersRoutes');
 const eventRoutes = require('./routes/eventRoutes');
-const hotelRoutes = require('./routes/activityRoutes');
+const hotelRoutes = require('./routes/hotelRoutes');
 const imagesRoutes = require('./routes/imagesRoutes');
 const newsRoutes = require('./routes/newsRoutes');
 const restaurantRoutes = require('./routes/restaurantRoutes');
@@ -38,7 +38,7 @@ const v1 = {
   activityRoutes: 'activities',
   authRoutes: 'auth',
   customersRoutes: 'customers',
-  eventRoutes: 'event',
+  eventRoutes: 'events',
   hotelRoutes: 'hotels',
   imagesRoutes: 'images',
   newsRoutes: 'news',

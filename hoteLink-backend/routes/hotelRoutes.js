@@ -9,7 +9,7 @@ router.get('/', async function(req, res, next) {
     try{
         result = await hotelBL.getHotelListings();
     }catch(err){
-        console.error(err.message);
+        console.error(err);
         res.status(500).json({message : 'Error interno del Server'});
         return;
     }
@@ -27,7 +27,7 @@ router.get('/:id', async function(req, res, next) {
     try{
         result = await hotelBL.getHotelById(req.params.id);
     }catch(err){
-        console.error(err.message);
+        console.error(err);
         res.status(500).json({message : 'Error interno del Server'});
         return;
     }

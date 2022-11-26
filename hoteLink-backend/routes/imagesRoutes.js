@@ -13,7 +13,7 @@ router.get('/:id', async function(req, res, next) {
         return;
     }
     if(result){
-        res.status(200).json(imageSrc);
+        res.status(200).json(result);
     }
 });
 
