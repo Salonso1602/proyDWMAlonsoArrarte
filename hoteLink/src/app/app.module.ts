@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { ModalBaseComponent } from '@components/modals/modal-base/modal-base.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,7 +16,6 @@ import { ModalToggleButtonComponent } from '@components/modals/modal-toggle-butt
 import { ModalLoginComponent } from './Components/modals/modal-login/modal-login.component';
 import { ModalFiltersComponent } from './Components/modals/modal-filters/modal-filters.component';
 import { BookableDetailsComponent } from './Components/news/bookable-details/bookable-details.component';
-import { InMemoryDataService } from '@services/in-memory-data.service';
 import { NewsListComponent } from './Components/news/news-list/news-list.component';
 import { MoreInfoCardComponent } from './Components/moreInfo/more-info-card/more-info-card.component';
 import { MoreInfoDetailsComponent } from './Components/moreInfo/more-info-details/more-info-details.component';
