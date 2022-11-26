@@ -1,6 +1,4 @@
-import { Component, Directive, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Modals } from '../modals';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-modal-base',

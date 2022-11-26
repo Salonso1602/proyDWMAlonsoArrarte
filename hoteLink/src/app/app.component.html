@@ -1,7 +1,7 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="hasSelectedHotel"></app-navbar>
 <div class="container">
   <router-outlet></router-outlet>
 </div>
-<app-footer></app-footer>
+<app-footer *ngIf="hasSelectedHotel"></app-footer>
 
 <app-modal-login></app-modal-login>

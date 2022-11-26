@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Modals } from '@components/modals/modals';
+import { HotelService } from '@services/hotel.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +12,10 @@ export class NavbarComponent implements OnInit {
   @Input() hotelName? : string;
   modals = Modals;
   
-  constructor() { }
+  constructor(private hs : HotelService) { }
 
   ngOnInit(): void {
-    this.hotelName = "Duncan Hill Hotel";
+    this.hs.selectedHotel$.subscribe(hotel => this.hotelName = hotel?.name)
   }
 
 }

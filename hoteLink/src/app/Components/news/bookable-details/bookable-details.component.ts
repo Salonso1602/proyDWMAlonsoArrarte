@@ -1,7 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { IBookable } from '@interfaces/bookable';
-import { IActivity } from '@interfaces/activity';
-import { IEvent } from '@interfaces/event';
+import { Component, OnInit } from '@angular/core';
 import { newsTypes } from '@enums/newsTypes';
 import { INews } from '@interfaces/news';
 import { Router } from '@angular/router';

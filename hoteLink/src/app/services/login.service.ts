@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { firstValueFrom, Observable, of, tap } from 'rxjs';
-import { IUser } from '@interfaces/user';
+import { Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import * as moment from "moment";
 import { HotelService } from './hotel.service';

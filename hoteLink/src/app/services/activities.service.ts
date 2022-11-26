@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IActivity } from '@interfaces/activity';
-import { ICategory } from '@interfaces/category';
 import { RetrievedItem, SearchService } from '@components/search/search-service';
 import { map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
