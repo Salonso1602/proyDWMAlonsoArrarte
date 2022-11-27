@@ -18,6 +18,7 @@ export class AppComponent {
   constructor(private hs : HotelService){}
 
   ngOnInit() : void{
+    this.hs.getSavedHotel();
     this.hs.selectedHotel$.subscribe(hotel => this.hasSelectedHotel = hotel)
   }
 }

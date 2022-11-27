@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { IHotel } from '@interfaces/hotel';
 import { IlittleHotel } from '@interfaces/IlittleHotel';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
@@ -18,10 +18,7 @@ export class HotelService {
   constructor(
     private http: HttpClient,
   ) {
-    const hotelId = localStorage.getItem('hotel_id');
-    if(hotelId){
-      this.getAndSelectHotel(hotelId);
-    }
+    
   }
 
   selectHotel(hotel: IHotel) {
@@ -38,6 +35,13 @@ export class HotelService {
         this.selectHotel(hotel);
         localStorage.setItem('hotel_id', hotelId);
       }))
+  }
+
+  getSavedHotel() {
+    const hotelId = localStorage.getItem('hotel_id');
+    if(hotelId){
+      this.getAndSelectHotel(hotelId).subscribe();
+    }
   }
 
   clearSelectedHotel() {
