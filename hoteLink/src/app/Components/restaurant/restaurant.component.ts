@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IDish } from '@interfaces/dish';
+import { RestaurantService } from '@services/restaurant.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private restaurantService: RestaurantService
+  ) {}
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe(({ dishFromNews }) => {
+      if (dishFromNews) {
+        this.restaurantService.addDishToCurrentOrder(dishFromNews);
+      }
+      console.log(JSON.stringify(this.restaurantService.currentOrder));
+    })
   }
-
 }

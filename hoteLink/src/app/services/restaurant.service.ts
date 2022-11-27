@@ -13,6 +13,8 @@ import { environment } from 'src/environments/environment';
 export class RestaurantService implements SearchService<IDish> {
   static readonly restaurantUrl = `${environment.apiBaseUrl}/restaurant`;
 
+  readonly currentOrder: (IDish & {quantity: number})[] = [];
+
   constructor(
     private http: HttpClient
   ) { }
@@ -36,7 +38,20 @@ export class RestaurantService implements SearchService<IDish> {
       );
   }
 
+  getById(id: number): Observable<IDish> {
+    return this.http.get<IDish>(`${RestaurantService.restaurantUrl + '/dishes'}/${id}`);
+  }
+
   getCategories(): Observable<ICategory[]> {
     return this.http.get<ICategory[]>(`${RestaurantService.restaurantUrl}/dishes/categories`);
+  }
+
+  addDishToCurrentOrder(dish: IDish): void {
+    const existingDish = this.currentOrder.find(orderItem => orderItem.id === dish.id);
+    if (existingDish) {
+      existingDish.quantity++;
+    } else {
+      this.currentOrder.push({ ...dish, quantity: 1 });
+    }
   }
 }
