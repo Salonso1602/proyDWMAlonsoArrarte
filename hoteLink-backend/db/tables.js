@@ -4,6 +4,7 @@ module.exports = Object.freeze({
   BOOKABLE_AVAILABILITY_PER_HOTEL: 'bookable_availability_per_hotel',
   BOOKABLE_IN_NEWS: 'bookable_in_news',
   CATEGORY: 'category',
+  CLAIMS_AND_SUGGESTIONS: 'claims_and_suggestions',
   DISH: 'dish',
   DISH_AVAILABILITY_PER_HOTEL: 'dish_availability_per_hotel',
   DISH_IN_NEWS: 'dish_in_news',
