@@ -34,6 +34,7 @@ export class ModalLoginComponent implements OnInit {
             this.loginFailed = true;
           }
           else {
+            this.profileForm.reset();
             document.getElementById('closeModal' + this.modalId)!.click();
           }
         },
