@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { IActivity } from '@interfaces/activity';
 import { ICategory } from '@interfaces/category';
@@ -20,8 +20,16 @@ export type SearchEntities = IActivity | IEvent | IDish;
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
-  @Input('entity') entityName!: SearchEntitiesNames;
+export class SearchComponent implements OnInit, AfterViewInit {
+  _entityName!: SearchEntitiesNames;
+  @Input('entity') get entityName(): SearchEntitiesNames {
+    return this._entityName;
+  }
+  set entityName(entityName: SearchEntitiesNames) {
+    this._entityName = entityName;
+    this.setCategoryTypeAndService(entityName);
+  }
+
   entityType!: SearchEntities;
   entityService!: SearchService<SearchEntities>;
   categoryType!: categoryTypes;
@@ -41,7 +49,11 @@ export class SearchComponent implements OnInit {
       throw new Error('Entity type not set for Search & Filter component');
     }
 
-    switch (this.entityName) {
+    this.setCategoryTypeAndService(this.entityName);
+  }
+
+  setCategoryTypeAndService(entity: SearchEntitiesNames) {
+    switch (entity) {
       case 'activity':
         this.entityService = this.activitiesService;
         this.categoryType = categoryTypes.Activity;
@@ -55,6 +67,10 @@ export class SearchComponent implements OnInit {
         this.categoryType = categoryTypes.Food;
         break;
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.search();
   }
 
   search() {

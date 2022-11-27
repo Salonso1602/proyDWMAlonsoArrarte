@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SearchEntitiesNames } from '@components/search/search.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SearchComponent, SearchEntitiesNames } from '@components/search/search.component';
 
 @Component({
   selector: 'app-bookables-list',
@@ -7,6 +7,8 @@ import { SearchEntitiesNames } from '@components/search/search.component';
   styleUrls: ['./bookables-list.component.scss']
 })
 export class BookablesListComponent implements OnInit {
+  @ViewChild(SearchComponent) searchComponent!: SearchComponent;
+
   typesEnum: {[key: string]: SearchEntitiesNames} = Object.freeze({
     Activity: 'activity',
     Event: 'event'
@@ -16,7 +18,15 @@ export class BookablesListComponent implements OnInit {
     return Object.values(this.typesEnum);
   }
 
-  selectedType: SearchEntitiesNames = this.typesEnum['Activity'];
+  _selectedType: SearchEntitiesNames = this.typesEnum['Activity'];
+  get selectedType(): SearchEntitiesNames {
+    return this._selectedType;
+  }
+
+  set selectedType(type: SearchEntitiesNames) {
+    this._selectedType = type;
+    setTimeout(() => this.searchComponent.search());
+  }
 
   constructor() { }
 
