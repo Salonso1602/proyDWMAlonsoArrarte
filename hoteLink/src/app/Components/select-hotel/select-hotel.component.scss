@@ -20,10 +20,16 @@
     background-color: rgb(238, 237, 237);
 
     &:hover {
+        scale: 1.05;
+        cursor: pointer;
         box-shadow: .2rem .3rem 1rem rgba(black, .7);
         translate: 0 -.5rem;
         text-decoration: none !important;
     }
+}
+
+.row {
+    margin-bottom: 1rem;
 }
 
 span{
