@@ -2,7 +2,10 @@
 <app-modal-toggle-button
   [cssClass]="'btn btn-primary filterButton'"
   [modalId]="categoriesModalName">
-    Filtrar
+    Seleccionar categorías
 </app-modal-toggle-button>
 
-<app-modal-filters (selectionConfirmed)="updateSelectedCategories($event)"></app-modal-filters>
+<app-modal-filters
+  [filterType]="categoryType"
+  (selectionConfirmed)="updateSelectedCategories($event)">
+</app-modal-filters>

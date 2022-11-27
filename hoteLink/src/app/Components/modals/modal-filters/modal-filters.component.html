@@ -1,12 +1,21 @@
-<app-modal-base [title]="'Filtros Disponibles'" [id]="this.modalId">
+<app-modal-base [title]="'Filtros Disponibles'" [id]="this.modalId" *ngIf="categories">
     <div class="modal-body">
         <div class="row align-items-center">
-            <div class="col-5" *ngFor="let filter of this.filters">
+            <div class="col-5" *ngFor="let category of categories | async">
                 <div class="container category">
-                    <input type="checkbox" class="form-check-input" [id]="filter.name" (change)="filterToggle(filter)"/>
-                    <label [for]="filter.name" id="filterContent">
-                        <app-image [imageId]="filter.imageId" [id]="filter.name" class="filterImage"></app-image>
-                        <label [for]="filter.name">{{filter.name}}</label>
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        [id]="category.name"
+                        (change)="filterToggle(category)"/>
+
+                    <label [for]="category.name" id="filterContent">
+                        <app-image
+                            [imageId]="category.imageId"
+                            [id]="category.name"
+                            class="filterImage">
+                        </app-image>
+                        <label [for]="category.name">{{category.name}}</label>
                     </label>
                 </div>
             </div>

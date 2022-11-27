@@ -1,8 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Modals } from '../modals';
 import { categoryTypes } from '@enums/categoryTypes';
-import { CategoryService } from '@services/category.service';
 import { ICategory } from '@interfaces/category';
+import { ActivitiesService } from '@services/activities.service';
+import { EventsService } from '@services/events.service';
+import { RestaurantService } from '@services/restaurant.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-modal-filters',
@@ -10,26 +13,36 @@ import { ICategory } from '@interfaces/category';
   styleUrls: ['./modal-filters.component.scss']
 })
 export class ModalFiltersComponent implements OnInit {
-  modalId : Modals = Modals.filtersByCategory;
-  filters : ICategory[] = [];
-  @Input() filterType : categoryTypes = categoryTypes.Food;
-  selectedFilters : ICategory[] = [];
+  modalId: Modals = Modals.filtersByCategory;
+  categories!: Observable<ICategory[]>;
+  @Input() filterType!: categoryTypes;
+  selectedFilters: ICategory[] = [];
 
   @Output() selectionConfirmed = new EventEmitter<ICategory[]>();
 
-  constructor(private filterService : CategoryService) { }
+  constructor(
+    private restaurantService: RestaurantService,
+    private activitiesService: ActivitiesService,
+    private eventsService: EventsService
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.getFilters();
   }
 
   getFilters(){
+    if (!this.filterType) {
+      throw new Error('Filter type is required in ModalFiltersComponent');
+    }
+
     switch (this.filterType){
       case (categoryTypes.Food):
-        this.filters = this.filterService.getFoodCategories();
+        this.categories = this.restaurantService.getCategories();
         break;
       case (categoryTypes.Activity):
-        this.filters = this.filterService.getActivityCategories();
+        this.categories = this.activitiesService.getCategories();
         break;
     }
   }

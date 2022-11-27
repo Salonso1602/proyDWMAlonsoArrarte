@@ -1,5 +1,6 @@
-const Food = require('../entities/dish');
 const foodDA = require('../dataAccess/foodDA');
+const categoriesDA = require('../dataAccess/categoriesDA');
+const categoryTypes = require('../enums/categoryTypes');
 
 module.exports = {
     getAllFoods :  async (queryParams) => {
@@ -11,4 +12,14 @@ module.exports = {
             return resultDA;
         }
     },
+
+    getAllCategories: async () => {
+        const resultDA = await categoriesDA.getAllCategories(categoryTypes.Food);
+        if(resultDA.length === 0){
+            return undefined;
+        }
+        else{
+            return resultDA;
+        }
+    }
 }

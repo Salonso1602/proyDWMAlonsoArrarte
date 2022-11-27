@@ -1,5 +1,5 @@
 <button
-    [class]="cssClass ?? 'btn btn-primary btn-lg'"
+    [class]="cssClass || 'btn btn-primary btn-lg'"
     data-bs-toggle="modal"
     [attr.data-bs-target]="'#' + modalId">
     <ng-content></ng-content>
