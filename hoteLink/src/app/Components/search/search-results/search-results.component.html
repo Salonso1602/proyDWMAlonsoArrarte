@@ -1,6 +1,6 @@
 <div class="row">
   <div *ngFor="let result of data$ | async" class="col-md-6">
-    <div class="card">
+    <div class="card" [routerLink]="result.detailsRouterLink">
       <p><b>{{ result.cardTitle }}</b></p>
       <p>{{ result.cardDescription }}</p>
     </div>

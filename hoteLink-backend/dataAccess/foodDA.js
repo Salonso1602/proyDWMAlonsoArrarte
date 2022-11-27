@@ -2,6 +2,7 @@ const knex = require('../db/conn');
 
 const tables = require('../db/tables');
 const UnknownDbError = require('./errors/unknown-db');
+const UniqueNotFoundError = require('./errors/unique-not-found');
 
 const Dish = require('../entities/dish');
 
@@ -50,4 +51,28 @@ module.exports = {
         return resultBL;
     },
 
+    getDishById: async (id) => {
+        let resultDB;
+
+        try {
+            resultDB = await knex(tables.DISH).where('id', id);
+        }
+        catch (err) {
+            throw new UnknownDbError(tables.DISH, err);
+        }
+
+        if (resultDB.length === 0) {
+            throw new UniqueNotFoundError(tables.DISH, { id });
+        }
+        else {
+            const dbRow = resultDB[0];
+            return new Dish({
+                id: dbRow.id,
+                name: dbRow.name,
+                description: dbRow.description,
+                price: dbRow.price,
+                serviceTime: dbRow.serviceTime,
+            });
+        }
+    }
 }

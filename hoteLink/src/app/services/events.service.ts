@@ -33,7 +33,7 @@ export class EventsService implements SearchService<IEvent> {
               item: retrievedItem,
               cardTitle: retrievedItem.name,
               cardDescription: retrievedItem.description,
-              detailsRouterLink: ['/events', retrievedItem.id.toString()]
+              detailsRouterLink: ['/events', retrievedItem.id.toString(), 'details']
             }
           });
         })

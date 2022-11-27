@@ -33,7 +33,7 @@ export class ActivitiesService implements SearchService<IActivity> {
               item: retrievedItem,
               cardTitle: retrievedItem.name,
               cardDescription: retrievedItem.description,
-              detailsRouterLink: ['/activities', retrievedItem.id.toString()]
+              detailsRouterLink: ['/activities', retrievedItem.id.toString(), 'details']
             }
           });
         })
