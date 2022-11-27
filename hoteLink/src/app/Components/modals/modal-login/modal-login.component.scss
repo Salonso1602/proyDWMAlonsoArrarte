@@ -1,20 +1,5 @@
-#email{
-    width: 100%;
-    max-width: 500px;
-}
-#password{
-    width: 80%;
-    max-width: 400px;
-}
-#seePassword{
-    width: 20%;
-    max-width: 100px;
-    outline-style: auto;
-}
-#seePassword:checked{
-    background-color: red;
-}
-.btn.btn-primary{
-    background-color: var(--mainColor);
-    color: var(--txtOnMainColor);
+.errorMsg {
+  color: red;
+  font-size: .8rem;
+  font-style: italic;
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { LoginService } from '@services/login.service';
 import { Modals } from '../modals';
@@ -11,11 +12,13 @@ import { Modals } from '../modals';
 export class ModalLoginComponent implements OnInit {
   modalId = Modals.login;
   showPassword = false;
-  triedLogin = false;
   profileForm = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required]
   })
+
+  loginFailed = false;
+  loginError = '';
 
   constructor(private fb : FormBuilder, private lg : LoginService) { }
 
@@ -25,13 +28,25 @@ export class ModalLoginComponent implements OnInit {
   login(){
     const ctrls = this.profileForm.value;
     if(ctrls.email && ctrls.password){
-    this.lg.authUser(ctrls.email, ctrls.password).subscribe(key =>{
-      if(!key.idToken){
-        this.triedLogin = true;
-      } else{
-        this.triedLogin = false;
-      }
-    })
+      this.lg.authUser(ctrls.email, ctrls.password).subscribe(
+        key => {
+          if(!key.idToken){
+            this.loginFailed = true;
+          }
+          else {
+            document.getElementById('closeModal' + this.modalId)!.click();
+          }
+        },
+        (err: HttpErrorResponse) => {
+          this.loginFailed = true;
+          if (err.status === 401) {
+            this.loginError = 'Usuario o contraseña inválidos.';
+          }
+          else if (err.status === 500) {
+            this.loginError = 'Ha ocurrido un error, por favor reintente más tarde.';
+          }
+        }
+      );
     }
   }
 

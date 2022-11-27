@@ -1,0 +1,15 @@
+.inputAddon {
+  min-width: 50px;
+  justify-content: center;
+}
+
+:host ::ng-deep i.clickable {
+  transition: all .05s ease-in;
+}
+
+:host ::ng-deep i.clickable:hover {
+  cursor: pointer;
+  filter: brightness(1.15);
+  scale: 1.1;
+  text-shadow: 0 0 .5rem rgba(0, 0, 0, .3);
+}
