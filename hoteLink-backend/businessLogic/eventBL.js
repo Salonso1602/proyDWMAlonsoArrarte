@@ -31,8 +31,15 @@ module.exports = {
             return resultDA.date;
         }
     },
-    addQuestion :  async (wantedId, questionText) => {
-        const resultDA = await questionsDA.insertQuestion(wantedId, questionText);
+    addQuestion :  async (userId, wantedId, questionText) => {
+
+        const question = new Question({
+            userId: userId,
+            bookableId: wantedId,
+            question: questionText
+        })
+
+        const resultDA = await questionsDA.insertQuestion(question);
         if(resultDA === true || resultDA === false){
             return resultDA;
         } else {
