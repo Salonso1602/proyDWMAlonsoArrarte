@@ -1,7 +1,8 @@
 <div class="container">
-  <app-search-filter-text
-    (searchTextChanged)="updateSearchText($event)">
-  </app-search-filter-text>
+  <div class="container row">
+    <app-search-filter-text class="col-6 filterText"
+      (searchTextChanged)="updateSearchText($event)">
+    </app-search-filter-text>
 
   <app-search-filter-categories
     [categoryType]="categoryType"

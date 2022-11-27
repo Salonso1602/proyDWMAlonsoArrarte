@@ -1,5 +1,6 @@
 import { Component,  OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
+import { ClaimsAndSuggestionsService } from '@services/claimsAndSuggestion.service';
 import { Modals } from '../modals';
 
 @Component({
@@ -10,21 +11,23 @@ import { Modals } from '../modals';
 export class ModalSendRequestComponent implements OnInit {
 
   modalId = Modals.sendRequest;
-  suggestion = new FormControl('');
+  suggestion = new FormControl('', Validators.required);
 
-  constructor() { }
+  constructor(private cass : ClaimsAndSuggestionsService) { }
 
   ngOnInit(): void {
   }
 
   postMessage(){
-    if(this.suggestion.value===''){
+    const claim = this.suggestion.getRawValue();
+
+    if(!this.suggestion.valid || claim === null){
       alert("Por favor ingrese su sugerencia o reclamo en el espacio.")
     } else{
-      this.suggestion.reset('')
-    /*
-    PLACEHOLDER PARA SERVICIO DE POST
-    */
+      this.cass.sendActivityQuestion(claim).subscribe(resp =>{
+        alert('Mensaje Enviado');
+        this.suggestion.reset()})
+      
     }
   }
 

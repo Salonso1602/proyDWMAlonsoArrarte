@@ -10,7 +10,13 @@ router.post('/login', async function(req, res, next) {
         jwt = await authBL.generateToken(req.body.email, req.body.password);
     } catch(err){
         console.error(err);
-        res.sendStatus(500);
+
+        const errorStatus = err.status;
+        if(errorStatus){
+            res.sendStatus(errorStatus);
+        } else {
+            res.status(500).json({ message: 'Error interno del Server' });
+        }
         return;
     }
     if(!jwt){

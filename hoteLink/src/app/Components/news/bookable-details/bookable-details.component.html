@@ -6,12 +6,13 @@
     <p>{{card.caption}}</p>
 
     <div class="container-flex">
-        <app-modal-toggle-button modalId="sendRequest">Enviar Consulta</app-modal-toggle-button>
+        <app-modal-toggle-button modalId="sendQuestion">Enviar Consulta</app-modal-toggle-button>
         <button 
             *ngIf="this.cardType === types.Activity"
             class="btn btn-primary btn-lg"
             [routerLink]="['/', cardType, card.subject.id, 'booking']">Reservar</button>
     </div>
+    <app-modal-send-question [cardId]="card.subject.id"></app-modal-send-question>
 </div>
 
-<app-modal-send-request></app-modal-send-request>
+

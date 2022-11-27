@@ -36,9 +36,9 @@ module.exports = {
             return resultDA.timesOfActivity;
         }
     },
-    addQuestion: async (wantedId, questionText) => {
+    addQuestion: async (userId, wantedId, questionText) => {
         const question = new Question({
-            userId: 1,
+            userId: userId,
             bookableId: wantedId,
             question: questionText
         })

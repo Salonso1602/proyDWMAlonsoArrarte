@@ -15,6 +15,7 @@
 
 :root{
     --mainColor: rgb(146, 31, 2);
+    --mainColorClear : rgb(192, 43, 6);
     --mainColorDark: rgb(105, 21, 0);
     --inverseMainColor: rgb(63, 13, 0);
     --txtOnMainColor: whitesmoke;
@@ -40,6 +41,20 @@ h1 {
     font-style: italic;
 }
 
+.btn-primary{
+    border-color: var(--mainColorClear);
+    background-color: var(--mainColorClear);
+
+    &:focus {
+        border-color: var(--mainColorClear) !important;
+        background-color: var(--inverseMainColor) !important; 
+        }
+
+    &:hover{
+        border-color: var(--mainColorClear) !important;
+        background-color: var(--inverseMainColor) !important; 
+        }
+    }
 app-root {
     display: flex;
     flex-direction: column;
