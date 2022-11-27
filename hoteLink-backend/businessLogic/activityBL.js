@@ -2,7 +2,10 @@ const Activity = require('../entities/activity');
 const activityDA = require('../dataAccess/activityDA');
 const questionsDA = require('../dataAccess/questionsDA');
 const bookingsDA = require('../dataAccess/bookingsDA');
+const categoriesDA = require('../dataAccess/categoriesDA');
 const Question = require('../entities/question');
+
+const categoryTypes = require('../enums/categoryTypes');
 
 module.exports = {
     getAllActivities: async (queryParams) => {
@@ -46,6 +49,7 @@ module.exports = {
             return undefined;
         }
     },
+
     bookActivity: async (wantedId, userId, qtyPeople, finalPrice) => {
         const resultDA = await bookingsDA.book(wantedId, userId, qtyPeople, finalPrice);
         if(resultDA === true || resultDA === false){
@@ -54,4 +58,15 @@ module.exports = {
             return undefined;
         }
     },
+    
+
+    getAllCategories: async () => {
+        const resultDA = await categoriesDA.getAllCategories(categoryTypes.Activity);
+        if(resultDA.length === 0){
+            return undefined;
+        }
+        else{
+            return resultDA;
+        }
+    }
 }

@@ -4,8 +4,8 @@
       (searchTextChanged)="updateSearchText($event)">
     </app-search-filter-text>
 
-    <app-search-filter-categories class="col-6 filterButton"
-      (selectedCategoriesChanged)="updateCategories($event)">
-    </app-search-filter-categories>
-  </div>
+  <app-search-filter-categories
+    [categoryType]="categoryType"
+    (selectedCategoriesChanged)="updateCategories($event)">
+  </app-search-filter-categories>
 </div>

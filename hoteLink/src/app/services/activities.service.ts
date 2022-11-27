@@ -5,6 +5,7 @@ import { RetrievedItem, SearchService } from '@components/search/search-service'
 import { map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SearchFilter } from '@components/search/search-filter/search-filter';
+import { ICategory } from '@interfaces/category';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,12 @@ export class ActivitiesService implements SearchService<IActivity> {
               cardDescription: retrievedItem.description,
               detailsRouterLink: ['/activities', retrievedItem.id.toString()]
             }
-          })
+          });
         })
       );
+  }
+
+  getCategories(): Observable<ICategory[]> {
+    return this.http.get<ICategory[]>(`${ActivitiesService.activitiesUrl}/categories`);
   }
 }

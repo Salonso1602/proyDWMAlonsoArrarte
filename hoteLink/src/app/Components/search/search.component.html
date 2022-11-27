@@ -1,11 +1,9 @@
-<div class="container">
-  <div class="row">
-  <app-search-filter></app-search-filter>
-  
-  <button type="button" class="btn btn-primary searchBtn" (click)="search()">
-    <span>Buscar</span>
-  </button>
-</div>
-</div>
+<app-search-filter
+  [categoryType]="categoryType">
+</app-search-filter>
+
+<button type="button" class="btn btn-primary searchBtn" (click)="search()">
+  <span>Buscar</span>
+</button>
 
   <app-search-results [data$]="results$"></app-search-results>

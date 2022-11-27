@@ -1,14 +1,17 @@
 footer{
     background-color: var(--mainColor, black);
     position: relative;
-    top : 3em;
+    height: 100%;
 }
 
 .dataHotel{
-    padding-top: 5%;
-    padding-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
 }
 
 p{
     color: var(--txtOnMainColor);
+    margin: .5rem auto;
 }
