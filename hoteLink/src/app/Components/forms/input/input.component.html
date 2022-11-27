@@ -1,0 +1,20 @@
+<label [for]="inputId" class="form-label">
+  <ng-content select="[label]"></ng-content>
+</label>
+
+<div class="input-group mb-3">
+  <span class="input-group-text inputAddon">
+    <ng-content select="[inputPrefix]"></ng-content>
+  </span>
+
+  <input
+    [type]="type"
+    class="form-control"
+    [formControl]="control"
+    [name]="inputId"
+    [id]="inputId">
+
+  <span *ngIf="hasSuffix" class="input-group-text inputAddon">
+    <ng-content select="[inputSuffix]"></ng-content>
+  </span>
+</div>

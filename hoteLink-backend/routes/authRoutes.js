@@ -13,7 +13,12 @@ router.post('/login', async function(req, res, next) {
 
         const errorStatus = err.status;
         if(errorStatus){
-            res.sendStatus(errorStatus);
+            if (errorStatus === 404){
+                res.sendStatus(401);
+            }
+            else {
+                res.sendStatus(errorStatus);
+            }
         } else {
             res.status(500).json({ message: 'Error interno del Server' });
         }
