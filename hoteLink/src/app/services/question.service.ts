@@ -15,10 +15,10 @@ export class QuestionService {
   ) { }
 
   sendActivityQuestion(activityId : string, questionText : string) {
-    return this.http.post(QuestionService._apiUrl + '/activities/' + activityId + '/question', {question : questionText});
+    return this.http.post(QuestionService._apiUrl + '/activities/' + activityId + '/questions', {question : questionText});
   }
 
   sendEventQuestion(eventId : string, questionText : string) {
-    return this.http.post(QuestionService._apiUrl + '/events/' + eventId + '/question', {question : questionText});
+    return this.http.post(QuestionService._apiUrl + '/events/' + eventId + '/questions', {question : questionText});
   }
 }

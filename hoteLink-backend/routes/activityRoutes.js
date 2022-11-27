@@ -91,7 +91,7 @@ router.post('/:id/questions',
             res.status(404).json({ message: 'No existe esa actividad' });
         } else {
             if (result === true) {
-                res.sendStatus(201);
+                res.status(201).json();
             } else {
                 res.status(500).json({ message: 'No se pudo subir la consulta' });
             }
@@ -117,7 +117,7 @@ router.post('/:id/book',
             res.status(404).json({ message: 'No existe esa actividad' });
         } else {
             if (result === true) {
-                res.sendStatus(200);
+                res.status(201).json();
             } else {
                 res.status(500).json({ message: 'No se pudo concretar la reserva' });
             }

@@ -12,7 +12,7 @@
             class="btn btn-primary btn-lg"
             [routerLink]="['/', cardType, card.subject.id, 'booking']">Reservar</button>
     </div>
+    <app-modal-send-question [cardId]="card.subject.id"></app-modal-send-question>
 </div>
 
-<app-modal-send-request></app-modal-send-request>
-<app-modal-send-question ></app-modal-send-question>
+

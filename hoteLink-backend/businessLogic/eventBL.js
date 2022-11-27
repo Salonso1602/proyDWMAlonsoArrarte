@@ -2,6 +2,7 @@ const Event = require('../entities/event');
 const eventDA = require('../dataAccess/eventDA');
 const questionsDA = require('../dataAccess/questionsDA');
 const bookingsDA = require('../dataAccess/bookingsDA');
+const Question = require('../entities/question')
 
 module.exports = {
     getAllEvents :  async (queryParams) => {
