@@ -14,7 +14,14 @@ router.post(
     }
     catch (err) {
       console.error(err);
-      res.status(500).json({message: 'Error interno del Server'});
+
+        const errorStatus = err.status;
+        if(errorStatus){
+            res.sendStatus(errorStatus);
+        } else {
+            res.status(500).json({ message: 'Error interno del Server' });
+        }
+        return;
     }
   }
 )

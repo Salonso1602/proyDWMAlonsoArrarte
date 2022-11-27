@@ -13,7 +13,13 @@ router.get('/', async function (req, res, next) {
         result = await eventBL.getAllEvents(req.query);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Error interno del Server' });
+
+        const errorStatus = err.status;
+        if (errorStatus) {
+            res.sendStatus(errorStatus);
+        } else {
+            res.status(500).json({ message: 'Error interno del Server' });
+        }
         return;
     }
     if (!result) {
@@ -31,7 +37,13 @@ router.get('/:id', async function (req, res, next) {
         result = await eventBL.getEventById(req.params.id);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Error interno del Server' });
+
+        const errorStatus = err.status;
+        if (errorStatus) {
+            res.sendStatus(errorStatus);
+        } else {
+            res.status(500).json({ message: 'Error interno del Server' });
+        }
         return;
     }
     if (!result) {
@@ -49,7 +61,13 @@ router.get('/:id/availability', async function (req, res, next) {
         result = await eventBL.getSchedule(req.params.id);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Error interno del Server' });
+
+        const errorStatus = err.status;
+        if (errorStatus) {
+            res.sendStatus(errorStatus);
+        } else {
+            res.status(500).json({ message: 'Error interno del Server' });
+        }
         return;
     }
     if (!result) {
@@ -69,7 +87,13 @@ router.post('/:id/questions',
             result = await eventBL.addQuestion(req.auth.sub, req.params.id, req.body.question);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ message: 'No se pudo subir la consulta' });
+
+            const errorStatus = err.status;
+            if (errorStatus) {
+                res.sendStatus(errorStatus);
+            } else {
+                res.status(500).json({ message: 'Error interno del Server' });
+            }
             return;
         }
         if (result === undefined) {
@@ -94,7 +118,13 @@ router.post('/:id/book',
         }
         catch (err) {
             console.error(err);
-            res.status(500).json({ message: 'No se pudo hacer la reserva' });
+
+            const errorStatus = err.status;
+            if (errorStatus) {
+                res.sendStatus(errorStatus);
+            } else {
+                res.status(500).json({ message: 'Error interno del Server' });
+            }
             return;
         }
         if (result === undefined) {

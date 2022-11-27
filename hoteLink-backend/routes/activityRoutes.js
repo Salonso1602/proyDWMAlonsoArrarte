@@ -11,7 +11,13 @@ router.get('/', async function (req, res, next) {
         result = await activityBL.getAllActivities(req.query);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Error interno del Server' });
+
+        const errorStatus = err.status;
+        if (errorStatus) {
+            res.sendStatus(errorStatus);
+        } else {
+            res.status(500).json({ message: 'Error interno del Server' });
+        }
         return;
     }
     if (!result) {
@@ -28,7 +34,13 @@ router.get('/categories', async function (req, res) {
         result = await activityBL.getAllCategories();
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Error interno del Server' });
+
+        const errorStatus = err.status;
+        if (errorStatus) {
+            res.sendStatus(errorStatus);
+        } else {
+            res.status(500).json({ message: 'Error interno del Server' });
+        }
         return;
     }
     if (!result) {
@@ -46,7 +58,13 @@ router.get('/:id', async function (req, res, next) {
         result = await activityBL.getActivityById(req.params.id);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Error interno del Server' });
+
+        const errorStatus = err.status;
+        if (errorStatus) {
+            res.sendStatus(errorStatus);
+        } else {
+            res.status(500).json({ message: 'Error interno del Server' });
+        }
         return;
     }
     if (!result) {
@@ -63,8 +81,14 @@ router.get('/:id/availability', async function (req, res, next) {
     try {
         result = await activityBL.getSchedule(req.params.id);
     } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ message: 'Error interno del Server' });
+        console.error(err);
+
+        const errorStatus = err.status;
+        if (errorStatus) {
+            res.sendStatus(errorStatus);
+        } else {
+            res.status(500).json({ message: 'Error interno del Server' });
+        }
         return;
     }
     if (!result) {
@@ -83,8 +107,14 @@ router.post('/:id/questions',
         try {
             result = await activityBL.addQuestion(req.auth.sub, req.params.id, req.body.question);
         } catch (err) {
-            console.error(err.message);
-            res.status(500).json({ message: 'No se pudo subir la consulta' });
+            console.error(err);
+
+            const errorStatus = err.status;
+            if (errorStatus) {
+                res.sendStatus(errorStatus);
+            } else {
+                res.status(500).json({ message: 'Error interno del Server' });
+            }
             return;
         }
         if (result === undefined) {
@@ -109,8 +139,14 @@ router.post('/:id/book',
             result = await activityBL.bookActivity(req.params.actId, req.auth.sub, req.body.amountPeople, req.body.finalPrice);
         }
         catch (err) {
-            console.error(err.message);
-            res.status(500).json({ message: 'No se pudo hacer la reserva' });
+            console.error(err);
+
+            const errorStatus = err.status;
+            if (errorStatus) {
+                res.sendStatus(errorStatus);
+            } else {
+                res.status(500).json({ message: 'Error interno del Server' });
+            }
             return;
         }
         if (result === undefined) {
