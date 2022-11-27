@@ -21,7 +21,15 @@ export type SearchEntities = IActivity | IEvent | IDish;
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit, AfterViewInit {
-  @Input('entity') entityName!: SearchEntitiesNames;
+  _entityName!: SearchEntitiesNames;
+  @Input('entity') get entityName(): SearchEntitiesNames {
+    return this._entityName;
+  }
+  set entityName(entityName: SearchEntitiesNames) {
+    this._entityName = entityName;
+    this.setCategoryTypeAndService(entityName);
+  }
+
   entityType!: SearchEntities;
   entityService!: SearchService<SearchEntities>;
   categoryType!: categoryTypes;
@@ -41,7 +49,11 @@ export class SearchComponent implements OnInit, AfterViewInit {
       throw new Error('Entity type not set for Search & Filter component');
     }
 
-    switch (this.entityName) {
+    this.setCategoryTypeAndService(this.entityName);
+  }
+
+  setCategoryTypeAndService(entity: SearchEntitiesNames) {
+    switch (entity) {
       case 'activity':
         this.entityService = this.activitiesService;
         this.categoryType = categoryTypes.Activity;
