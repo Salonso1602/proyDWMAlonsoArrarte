@@ -1,0 +1,9 @@
+<app-modal-base [title]="'Escriba su consulta'" [id]="modalId" #modal>
+    <div class='modal-body'>
+        <textarea name="message" [formControl]="question"></textarea>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary"
+        (click)="postMessage()">Enviar</button>
+    </div>
+</app-modal-base>

@@ -39,6 +39,7 @@ import { IdTokenInterceptor } from './interceptors/id-token.interceptor';
 import { HotelPersistanceInterceptor } from './interceptors/hotel-persistance';
 import { SelectHotelComponent } from './Components/select-hotel/select-hotel.component';
 import { NeedsSelectedHotel } from './guards/needs-selected-hotel.service';
+import { ModalSendQuestionComponent } from './Components/modals/modal-send-question/modal-send-question.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { NeedsSelectedHotel } from './guards/needs-selected-hotel.service';
     SearchFilterCategoriesComponent,
     BookablesListComponent,
     BookableTypePipe,
-    SelectHotelComponent
+    SelectHotelComponent,
+    ModalSendQuestionComponent
   ],
   imports: [
     BrowserModule,

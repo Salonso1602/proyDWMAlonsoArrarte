@@ -6,7 +6,7 @@
     <p>{{card.caption}}</p>
 
     <div class="container-flex">
-        <app-modal-toggle-button modalId="sendRequest">Enviar Consulta</app-modal-toggle-button>
+        <app-modal-toggle-button modalId="sendQuestion">Enviar Consulta</app-modal-toggle-button>
         <button 
             *ngIf="this.cardType === types.Activity"
             class="btn btn-primary btn-lg"
@@ -15,3 +15,4 @@
 </div>
 
 <app-modal-send-request></app-modal-send-request>
+<app-modal-send-question ></app-modal-send-question>
