@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SearchFilter } from '@components/search/search-filter/search-filter';
 import { RetrievedItem, SearchService } from '@components/search/search-service';
+import { ICategory } from '@interfaces/category';
 import { IDish } from '@interfaces/dish';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -33,5 +34,9 @@ export class RestaurantService implements SearchService<IDish> {
           })
         })
       );
+  }
+
+  getCategories(): Observable<ICategory[]> {
+    return this.http.get<ICategory[]>(`${RestaurantService.restaurantUrl}/dishes/categories`);
   }
 }

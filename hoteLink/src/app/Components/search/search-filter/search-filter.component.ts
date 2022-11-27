@@ -1,5 +1,6 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Modals } from '@components/modals/modals';
+import { categoryTypes } from '@enums/categoryTypes';
 import { ICategory } from '@interfaces/category';
 import { SearchFilter } from './search-filter';
 
@@ -13,6 +14,8 @@ export class SearchFilterComponent implements OnInit {
     searchText: '',
     categories: []
   }
+  
+  @Input() categoryType!: categoryTypes;
 
   constructor() { }
 

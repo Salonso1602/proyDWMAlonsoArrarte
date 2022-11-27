@@ -10,6 +10,7 @@ import { EventsService } from '@services/events.service';
 import { Observable } from 'rxjs';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
 import { RestaurantService } from '@services/restaurant.service';
+import { categoryTypes } from '@enums/categoryTypes';
 
 export type SearchEntitiesNames = 'activity' | 'event' | 'dish';
 export type SearchEntities = IActivity | IEvent | IDish;
@@ -23,6 +24,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   @Input('entity') entityName!: SearchEntitiesNames;
   entityType!: SearchEntities;
   entityService!: SearchService<SearchEntities>;
+  categoryType!: categoryTypes;
   
   @ViewChild(SearchFilterComponent) searchFilterComponent!: SearchFilterComponent;
   
@@ -42,12 +44,15 @@ export class SearchComponent implements OnInit, AfterViewInit {
     switch (this.entityName) {
       case 'activity':
         this.entityService = this.activitiesService;
+        this.categoryType = categoryTypes.Activity;
         break;
       case 'event':
         this.entityService = this.eventsService;
+        this.categoryType = categoryTypes.Activity;
         break;
       case 'dish':
         this.entityService = this.restaurantService;
+        this.categoryType = categoryTypes.Food;
         break;
     }
   }
