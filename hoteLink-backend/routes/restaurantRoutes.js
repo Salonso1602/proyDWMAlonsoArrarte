@@ -9,7 +9,7 @@ router.get('/dishes', async function(req, res, next) {
     try{
         result = await restaurantBL.getAllFoods(req.query);
     }catch(err){
-        console.error(err.message);
+        console.error(err);
         res.status(500).json({message : 'Error interno del Server'});
         return;
     }
@@ -20,6 +20,21 @@ router.get('/dishes', async function(req, res, next) {
     }
 });
 
+router.get('/dishes/categories', async function(req, res) {
+    let result;
 
+    try{
+        result = await restaurantBL.getAllCategories();
+    }catch(err){
+        console.error(err);
+        res.status(500).json({message : 'Error interno del Server'});
+        return;
+    }
+    if(!result){
+        res.status(404).json({message : 'No hay Categorías'}); 
+    } else{
+        res.status(200).json(result);
+    }
+});
 
 module.exports = router;

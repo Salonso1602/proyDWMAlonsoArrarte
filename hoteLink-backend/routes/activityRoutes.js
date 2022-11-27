@@ -20,6 +20,23 @@ router.get('/', async function(req, res, next) {
     }
 });
 
+router.get('/categories', async function(req, res) {
+    let result;
+
+    try{
+        result = await activityBL.getAllCategories();
+    }catch(err){
+        console.error(err);
+        res.status(500).json({message : 'Error interno del Server'});
+        return;
+    }
+    if(!result){
+        res.status(404).json({message : 'No hay Categorías'}); 
+    } else{
+        res.status(200).json(result);
+    }
+});
+
 //get activity details by id
 router.get('/:id', async function(req, res, next) {
     let result;
