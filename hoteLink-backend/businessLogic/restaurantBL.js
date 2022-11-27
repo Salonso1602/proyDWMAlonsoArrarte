@@ -21,5 +21,15 @@ module.exports = {
         else{
             return resultDA;
         }
+    },
+
+    getDishById: async (id) => {
+        const resultDA = await foodDA.getDishById(id);
+        if(!resultDA){
+            return undefined;
+        }
+        else{
+            return resultDA;
+        }
     }
 }

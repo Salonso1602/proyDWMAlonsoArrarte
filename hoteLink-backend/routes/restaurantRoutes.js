@@ -43,4 +43,24 @@ router.get('/dishes/categories', async function(req, res) {
     }
 });
 
+router.get('/dishes/:id', async function(req, res) {
+    let result;
+
+    try {
+        result = await restaurantBL.getDishById(req.params.id);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).json({message : 'Error interno del Server'});
+        return;
+    }
+
+    if (!result) {
+        res.status(404).json({message : 'No hay Comida'});
+    }
+    else {
+        res.status(200).json(result);
+    }
+});
+
 module.exports = router;

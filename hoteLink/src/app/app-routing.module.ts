@@ -10,6 +10,7 @@ import { RestaurantComponent } from '@components/restaurant/restaurant.component
 import { BookablesListComponent } from '@components/booking/bookables-list/bookables-list.component';
 import { NeedsSelectedHotel } from './guards/needs-selected-hotel.service';
 import { SelectHotelComponent } from '@components/select-hotel/select-hotel.component';
+import { AddDishToOrderResolver } from './resolvers/add-dish-to-order.resolver';
 
 const routes: Routes = [
   {
@@ -64,7 +65,19 @@ const routes: Routes = [
   {
     path: 'restaurant',
     canActivate : [NeedsSelectedHotel],
-    component: RestaurantComponent
+    children: [
+      {
+        path: '',
+        component: RestaurantComponent
+      },
+      {
+        path: 'addToOrder/:id',
+        component: RestaurantComponent,
+        resolve: {
+          dishFromNews: AddDishToOrderResolver
+        }
+      }
+    ]
   },
   {
     path: 'activitiesAndEvents',
