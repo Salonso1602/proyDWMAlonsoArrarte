@@ -6,7 +6,7 @@ const authDA = require('../dataAccess/authDA')
 
 const PRIVATE_KEY = fs.readFileSync('./keys/rsa_private.pem');
 const PUBLIC_KEY = fs.readFileSync('./keys/rsa_public.pem');
-const expireTime = 240;
+const expireTime = '7d';
 
 //middleware verificador de token
 const checkAuth = expressJwt.expressjwt({
