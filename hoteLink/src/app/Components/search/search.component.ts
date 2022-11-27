@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { IActivity } from '@interfaces/activity';
 import { ICategory } from '@interfaces/category';
@@ -19,7 +19,7 @@ export type SearchEntities = IActivity | IEvent | IDish;
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, AfterViewInit {
   @Input('entity') entityName!: SearchEntitiesNames;
   entityType!: SearchEntities;
   entityService!: SearchService<SearchEntities>;
@@ -50,6 +50,10 @@ export class SearchComponent implements OnInit {
         this.entityService = this.restaurantService;
         break;
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.search();
   }
 
   search() {
