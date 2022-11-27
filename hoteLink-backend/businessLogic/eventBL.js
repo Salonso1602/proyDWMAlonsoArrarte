@@ -20,6 +20,7 @@ module.exports = {
             return undefined;
         }
         else{
+            resultDA.remainingPlaces = await bookingsDA.getRemainingPlaces(wantedId);
             return resultDA;
         }
     },

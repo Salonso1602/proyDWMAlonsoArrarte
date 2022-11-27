@@ -3,6 +3,7 @@ module.exports = Object.freeze({
   BOOKABLE: 'bookable',
   BOOKABLE_AVAILABILITY_PER_HOTEL: 'bookable_availability_per_hotel',
   BOOKABLE_IN_NEWS: 'bookable_in_news',
+  BOOKINGS: 'bookings',
   CATEGORY: 'category',
   CLAIMS_AND_SUGGESTIONS: 'claims_and_suggestions',
   DISH: 'dish',

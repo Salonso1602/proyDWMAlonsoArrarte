@@ -43,6 +43,7 @@ module.exports = {
                 id: dbRow[tables.BOOKABLE].id,
                 name: dbRow[tables.BOOKABLE].name,
                 place: dbRow[tables.BOOKABLE].place,
+                reservationLimit: dbRow[tables.BOOKABLE].reservationLimit,
                 date: dbRow[tables.EVENT].date,
                 entranceFee: dbRow[tables.EVENT].entranceFee
             });
@@ -79,6 +80,7 @@ module.exports = {
                 id: dbRow[tables.BOOKABLE].id,
                 name: dbRow[tables.BOOKABLE].name,
                 place: dbRow[tables.BOOKABLE].place,
+                reservationLimit: dbRow[tables.BOOKABLE].reservationLimit,
                 date: dbRow[tables.EVENT].date,
                 entranceFee: dbRow[tables.EVENT].entranceFee
             });
