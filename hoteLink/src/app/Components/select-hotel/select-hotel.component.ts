@@ -21,8 +21,8 @@ export class SelectHotelComponent implements OnInit {
 
   selectHotel(hotelid : string){
     this.hs.getAndSelectHotel(hotelid).subscribe(
-      hotel => this.router.navigate(['/home'])
-    )
+      hotel => {
+        this.router.navigate(['/home']);})
 
   }
 

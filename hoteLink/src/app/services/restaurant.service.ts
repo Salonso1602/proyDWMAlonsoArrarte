@@ -9,8 +9,8 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class DishesService implements SearchService<IDish> {
-  static readonly dishesUrl = `${environment.apiBaseUrl}/dishes`;
+export class RestaurantService implements SearchService<IDish> {
+  static readonly restaurantUrl = `${environment.apiBaseUrl}/restaurant`;
 
   constructor(
     private http: HttpClient
@@ -20,7 +20,7 @@ export class DishesService implements SearchService<IDish> {
     const queryParams =
       `search=${filter.searchText}&categories=${filter.categories.map(category => category.id).join(',')}`;
 
-    return this.http.get<IDish[]>(`${DishesService.dishesUrl}?${queryParams}`)
+    return this.http.get<IDish[]>(`${RestaurantService.restaurantUrl + '/dishes'}?${queryParams}`)
       .pipe(
         map(retrievedItems => {
           return retrievedItems.map(retrievedItem => {

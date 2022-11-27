@@ -18,31 +18,32 @@ export class HotelService {
   constructor(
     private http: HttpClient,
   ) {
-    this.http.get<IHotel[]>(`http://localhost:3000/hotels`)
-      .pipe(
-        tap(hotels => this.allHotels = hotels),
-        tap(hotels => this.selectedHotel$.next(hotels[0]))
-      );
+    const hotelId = localStorage.getItem('hotel_id');
+    if(hotelId){
+      this.getAndSelectHotel(hotelId);
+    }
   }
 
   selectHotel(hotel: IHotel) {
     this.selectedHotel$.next(hotel);
   }
 
-  getAllHotels() : Observable<IlittleHotel[]>{
+  getAllHotels(): Observable<IlittleHotel[]> {
     return this.http.get<IlittleHotel[]>(this.url);
   }
 
-  getAndSelectHotel(hotelId : string) : Observable<IHotel>{
+  getAndSelectHotel(hotelId: string): Observable<IHotel> {
     return this.http.get<IHotel>(this.url + '/' + hotelId).pipe(
-      tap(hotel =>{ this.selectHotel(hotel) 
-      localStorage.setItem('hotel_id', hotel.id)}))
+      tap(hotel => {
+        this.selectHotel(hotel);
+        localStorage.setItem('hotel_id', hotelId);
+      }))
   }
 
-  clearSelectedHotel(){
+  clearSelectedHotel() {
     localStorage.removeItem('hotel_id');
     this.selectedHotel$.next(undefined);
   }
 
-  hasSelectedHotel = localStorage.getItem('hotel_id') !== null;
+  hasSelectedHotel = localStorage.getItem('hotel_id');
 }

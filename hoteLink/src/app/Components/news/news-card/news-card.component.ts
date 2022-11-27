@@ -21,7 +21,7 @@ export class NewsCardComponent implements OnInit {
   }
 
   isActivityNews(subject: IActivity | IDish | IEvent): subject is IActivity {
-    return (subject as IActivity).timesOfActivity !== undefined;
+    return (subject as IActivity).weeklyPrice !== undefined;
   }
   
   isDishNews(subject: IActivity | IDish | IEvent): subject is IDish {

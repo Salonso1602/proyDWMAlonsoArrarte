@@ -9,7 +9,7 @@ import { ActivitiesService } from '@services/activities.service';
 import { EventsService } from '@services/events.service';
 import { Observable } from 'rxjs';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
-import { DishesService } from '@services/dishes.service';
+import { RestaurantService } from '@services/restaurant.service';
 
 export type SearchEntitiesNames = 'activity' | 'event' | 'dish';
 export type SearchEntities = IActivity | IEvent | IDish;
@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
   constructor(
     private activitiesService: ActivitiesService,
     private eventsService: EventsService,
-    private dishesService: DishesService
+    private restaurantService: RestaurantService
   ) {}
 
   ngOnInit(): void {
@@ -47,7 +47,7 @@ export class SearchComponent implements OnInit {
         this.entityService = this.eventsService;
         break;
       case 'dish':
-        this.entityService = this.dishesService;
+        this.entityService = this.restaurantService;
         break;
     }
   }
