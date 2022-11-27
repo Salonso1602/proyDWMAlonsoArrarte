@@ -14,6 +14,7 @@ const helmet = require('helmet');
 const init = require('./init');
 const activityRoutes = require('./routes/activityRoutes');
 const authRoutes = require('./routes/authRoutes');
+const claimsAndSuggestions = require('./routes/claimsAndSuggestionsRoutes');
 const customersRoutes = require('./routes/customersRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 const hotelRoutes = require('./routes/hotelRoutes');
@@ -37,6 +38,7 @@ app.use(cors());
 const v1 = {
   activityRoutes: 'activities',
   authRoutes: 'auth',
+  claimsAndSuggestions: 'claimsAndSuggestions',
   customersRoutes: 'customers',
   eventRoutes: 'events',
   hotelRoutes: 'hotels',
@@ -51,6 +53,7 @@ Object.entries(v1).forEach(([key, value]) => {
 
 app.use(v1.activityRoutes, activityRoutes);
 app.use(v1.authRoutes, authRoutes);
+app.use(v1.claimsAndSuggestions, claimsAndSuggestions);
 app.use(v1.customersRoutes, customersRoutes);
 app.use(v1.eventRoutes, eventRoutes);
 app.use(v1.hotelRoutes, hotelRoutes);
