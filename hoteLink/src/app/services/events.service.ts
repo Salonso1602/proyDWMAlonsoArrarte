@@ -39,4 +39,8 @@ export class EventsService implements SearchService<IEvent> {
         })
       );
   }
+
+  book(eventId: number, placesToBook: number, finalPrice: number): Observable<void> {
+    return this.http.post<void>(`${EventsService.eventsUrl}/${eventId}/book`, { placesToBook, finalPrice });
+  }
 }

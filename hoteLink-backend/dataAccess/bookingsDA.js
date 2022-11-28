@@ -4,7 +4,7 @@ const tables = require('../db/tables');
 const UnknownDbError = require('./errors/unknown-db');
 
 module.exports = {
-    book : async (bookableId, userId, amountPeople, finalPrice) => {
+    book : async (bookableId, userId, amountPeople, until, finalPrice) => {
         let result;
         try {
             result = await knex(tables.BOOKINGS)
@@ -12,6 +12,7 @@ module.exports = {
                     bookableId,
                     userId,
                     amountPeople,
+                    until,
                     finalPrice
                 });
         }

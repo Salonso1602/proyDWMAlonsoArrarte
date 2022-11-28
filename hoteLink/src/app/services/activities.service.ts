@@ -43,4 +43,8 @@ export class ActivitiesService implements SearchService<IActivity> {
   getCategories(): Observable<ICategory[]> {
     return this.http.get<ICategory[]>(`${ActivitiesService.activitiesUrl}/categories`);
   }
+
+  book(activityId: number, placesToBook: number, until: Date, finalPrice: number): Observable<void> {
+    return this.http.post<void>(`${ActivitiesService.activitiesUrl}/${activityId}/book`, { placesToBook, until, finalPrice });
+  }
 }

@@ -8,6 +8,7 @@ import { IBookable } from '@interfaces/bookable';
 import { IEvent } from '@interfaces/event';
 import { ActivitiesService } from '@services/activities.service';
 import { EventsService } from '@services/events.service';
+import * as moment from 'moment';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -23,10 +24,12 @@ export class BookingComponent implements OnInit {
     booking: FormGroup<{
       placesToBook: FormControl,
       untilDate?: FormControl
-    }>
+    }>,
+    totalPrice: FormControl
   }>;
 
   subject$!: Observable<IEvent | IActivity>;
+  eventOrActivity!: IEvent | IActivity;
   type!: string;
 
   constructor(
@@ -53,6 +56,8 @@ export class BookingComponent implements OnInit {
     }
 
     this.subject$.subscribe(subject => {
+      this.eventOrActivity = subject;
+
       this.bookingForm = this.fb.group({
         location: new FormControl({ value: subject.place, disabled: true }),
         availablePlaces: new FormControl({
@@ -69,7 +74,30 @@ export class BookingComponent implements OnInit {
             Validators.min(1),
             Validators.max(subject.remainingPlaces)
           ])
-        })
+        }),
+        totalPrice: new FormControl({ value: null, disabled: true })
+      });
+
+      this.bookingForm.valueChanges.subscribe(() => {
+        let basePrice;
+        let weeks = 1;
+        if (this.isEvent(subject)) {
+          basePrice = subject.entranceFee;
+        }
+        else {
+          basePrice = subject.weeklyPrice;
+          let untilDate = this.bookingForm!.controls.booking!.controls.untilDate!.value;
+          weeks = moment(untilDate).diff(moment(), 'weeks') + 1;
+        }
+        
+        const totalPrice = basePrice
+          * weeks
+          * this.bookingForm!.controls.booking!.controls.placesToBook!.value;
+
+        this.bookingForm!.controls.totalPrice!.setValue(
+          this.decimalPipe.transform(totalPrice, '1.2-2'),
+          { emitEvent: false }
+        );
       });
     });
   }
@@ -83,5 +111,23 @@ export class BookingComponent implements OnInit {
 
   isActivity(subject: IBookable): subject is IActivity {
     return this.type === newsTypes.Activity;
+  }
+
+  makeBooking() {
+    const subjectId = parseInt(this.route.snapshot.paramMap.get('id') as string);
+    const placesToBook = this.bookingForm!.controls.booking!.controls.placesToBook!.value;
+    const untilDate = this.bookingForm!.controls.booking!.controls.untilDate!.value;
+    const finalPrice = this.bookingForm!.controls.totalPrice!.value;
+
+    if (this.type === newsTypes.Event) {
+      this.eventsService.book(subjectId, placesToBook, finalPrice).subscribe(() => {
+        this.router.navigate(['home']);
+      });
+    }
+    else {
+      this.activitiesService.book(subjectId, placesToBook, untilDate, finalPrice).subscribe(() => {
+        this.router.navigate(['home']);
+      });
+    }
   }
 }
