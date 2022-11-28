@@ -6,7 +6,7 @@
       <div  class="btn-group" role="group">
         <div *ngFor="let type of types">
         <input type="radio" class="btn-check" name="radio" [id]="'radio'+type" (click)="radioChange(type)">
-        <label class="btn btn-outline-primary" for="radio{{type}}">{{ type | bookableType }}</label>
+        <label class="btn btn-primary" for="radio{{type}}">{{ type | bookableType }}</label>
         </div>
       </div>
     </div>
