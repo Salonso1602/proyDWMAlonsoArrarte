@@ -136,7 +136,13 @@ router.post('/:id/book',
         let result;
 
         try {
-            result = await activityBL.bookActivity(req.params.actId, req.auth.sub, req.body.amountPeople, req.body.finalPrice);
+            result = await activityBL.bookActivity(
+                parseInt(req.params.id),
+                parseInt(req.auth.sub),
+                parseInt(req.body.placesToBook),
+                req.body.until,
+                parseFloat(req.body.finalPrice)
+            );
         }
         catch (err) {
             console.error(err);

@@ -41,6 +41,7 @@ import { SelectHotelComponent } from './Components/select-hotel/select-hotel.com
 import { NeedsSelectedHotel } from './guards/needs-selected-hotel.service';
 import { ModalSendQuestionComponent } from './Components/modals/modal-send-question/modal-send-question.component';
 import { InputComponent } from './Components/forms/input/input.component';
+import { CurrencyPipe, DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { InputComponent } from './Components/forms/input/input.component';
       useClass: HotelPersistanceInterceptor,
       multi: true
     },
-    NeedsSelectedHotel
+    NeedsSelectedHotel,
+    DecimalPipe
   ],
   bootstrap: [AppComponent]
 })

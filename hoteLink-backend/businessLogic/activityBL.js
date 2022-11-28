@@ -6,6 +6,7 @@ const categoriesDA = require('../dataAccess/categoriesDA');
 const Question = require('../entities/question');
 
 const categoryTypes = require('../enums/categoryTypes');
+const { DaysOfWeek, getDayNumber } = require('../enums/days-of-week');
 
 module.exports = {
     getAllActivities: async (queryParams) => {
@@ -23,6 +24,10 @@ module.exports = {
             return undefined;
         }
         else{
+            resultDA.timesOfActivity.forEach(time => {
+                time.dayOfWeek = getDayNumber(time.dayOfWeek);
+            });
+            resultDA.remainingPlaces = await bookingsDA.getRemainingPlaces(wantedId);
             return resultDA;
         }
     },
@@ -50,10 +55,10 @@ module.exports = {
         }
     },
 
-    bookActivity: async (wantedId, userId, qtyPeople, finalPrice) => {
-        const resultDA = await bookingsDA.book(wantedId, userId, qtyPeople, finalPrice);
-        if(resultDA === true || resultDA === false){
-            return resultDA;
+    bookActivity: async (wantedId, userId, qtyPeople, until, finalPrice) => {
+        const resultDA = await bookingsDA.book(wantedId, userId, qtyPeople, until, finalPrice);
+        if(resultDA){
+            return true;
         } else {
             return undefined;
         }

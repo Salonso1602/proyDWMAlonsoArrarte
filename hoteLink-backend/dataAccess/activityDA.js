@@ -45,6 +45,7 @@ module.exports = {
                 id: dbRow[tables.BOOKABLE].id,
                 name: dbRow[tables.BOOKABLE].name,
                 place: dbRow[tables.BOOKABLE].place,
+                reservationLimit: dbRow[tables.BOOKABLE].reservationLimit,
                 weeklyPrice: dbRow[tables.ACTIVITY].weeklyPrice,
                 timesOfActivity:
                     resultDB.timesOfActivities
@@ -95,6 +96,7 @@ module.exports = {
                 id: dbRow[tables.BOOKABLE].id,
                 name: dbRow[tables.BOOKABLE].name,
                 place: dbRow[tables.BOOKABLE].place,
+                reservationLimit: dbRow[tables.BOOKABLE].reservationLimit,
                 weeklyPrice: dbRow[tables.ACTIVITY].weeklyPrice,
                 timesOfActivity: 
                     result

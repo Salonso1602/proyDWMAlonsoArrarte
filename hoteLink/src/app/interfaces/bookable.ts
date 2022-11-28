@@ -3,8 +3,6 @@ export interface IBookable {
   name: string;
   description: string;
   place: string;
-  booking: {
-    total: number,
-    remaining: number
-  }
+  reservationLimit: number;
+  remainingPlaces: number;
 }

@@ -114,7 +114,7 @@ router.post('/:id/book',
         let result;
 
         try {
-            result = await eventBL.bookEvent(req.params.actId, req.auth.sub, req.body.amountPeople, req.body.finalPrice);
+            result = await eventBL.bookEvent(req.params.id, req.auth.sub, req.body.placesToBook, req.body.finalPrice);
         }
         catch (err) {
             console.error(err);

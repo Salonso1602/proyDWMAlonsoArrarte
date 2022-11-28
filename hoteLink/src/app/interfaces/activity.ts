@@ -7,7 +7,7 @@ export interface IActivity extends IBookable {
 }
 
 export interface TimeOfActivity {
-  day: DaysOfWeek,
+  dayOfWeek: DaysOfWeek,
   startTime: Date,
   endTime: Date
 }

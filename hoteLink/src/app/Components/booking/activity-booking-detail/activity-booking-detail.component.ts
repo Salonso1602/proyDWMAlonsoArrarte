@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { DaysOfWeek, getDayName } from '@enums/days-of-week';
 import { IActivity } from '@interfaces/activity';
 
@@ -9,10 +10,14 @@ import { IActivity } from '@interfaces/activity';
 })
 export class ActivityBookingDetailComponent implements OnInit {
   @Input() activity!: IActivity;
+  @Input() priceControl!: FormControl;
 
   constructor() { }
 
   ngOnInit(): void {
+    if (!this.priceControl) {
+      throw new Error('priceControl is required in ActivityBookingDetailComponent');
+    }
   }
 
   getDayName(day: DaysOfWeek): string {

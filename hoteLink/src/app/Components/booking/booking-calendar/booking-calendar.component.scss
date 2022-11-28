@@ -4,26 +4,19 @@
   max-width: 600px;
   padding: 1rem 2rem;
   margin: 0 auto;
+  justify-content: center;
 
   & > *{
-    border-radius: 0px;
-
-    &:first-child{
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-    }
-
-    &:last-child{
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-    }
+    border-radius: 5px;
   }
 }
 
 .next-time {
   background-color: rgb(64, 204, 197);
   color: white;
-  padding: 10%;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 2rem;
   text-align: center;
   flex: 1 0 auto;
 }

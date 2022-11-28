@@ -16,14 +16,16 @@ exports.seed = async function(knex) {
   await knex(tables.BOOKABLE).insert([
     {
       id: 1,
-      name: 'Tour por los suburbios',
+      name: 'Gira Mundial de Guns & Roses',
       place: 'Camino Perimetral Km 5',
+      reservationLimit: 25000,
       categoryId: 2
     },
     {
       id: 2,
       name: 'Clases de equitación - Nivel Principiante',
       place: 'Establo "Mi Potro"',
+      reservationLimit: 10,
       categoryId: 2
     }
   ]);
