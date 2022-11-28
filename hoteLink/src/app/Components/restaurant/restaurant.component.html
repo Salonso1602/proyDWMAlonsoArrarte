@@ -1,2 +1,11 @@
 <h1>Restaurante</h1>
 <app-search [entity]="'dish'"></app-search>
+
+<div class="fixed-button d-flex bottom-0 justify-content-end mt-auto sticky-bottom">
+  <div class="me-3 mb-5 mt-4 ms-3 d-none d-sm-block">
+    <button type="button" class="btn btn-primary btn-lg" (click)="showOrderItems()">
+      <i class="fa fa-shopping-cart"></i>
+      <span class="badge bg-secondary">{{ orderItemsCount() }}</span>
+    </button>
+  </div>
+</div>
