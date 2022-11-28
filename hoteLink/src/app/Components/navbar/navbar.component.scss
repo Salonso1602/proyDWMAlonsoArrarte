@@ -14,6 +14,10 @@ a.navbar-brand {
     }
 }
 
+.container-inline{
+    max-width: 70vw;
+}
+
 .header{
     padding: 1em;
 }
@@ -39,14 +43,23 @@ button{
 
 svg{
     vertical-align: text-top;
-    width: 1em;
-    height: 1em;
+    width: clamp(1rem, 1em, 2rem);
+    height: clamp(1rem, 1em, 2rem);
     fill: var(--txtOnMainColor);
+}
+i{
+    width: clamp(1rem, 1em, 2rem);
+    height: clamp(1rem, 1em, 2rem);
+    color: var(--txtOnMainColor);
+}
+p{
+    display: inline;
+    font-size: clamp(10pt, 15pt, 24pt);
 }
 
 span{
     color: var(--txtOnMainColor);
-    font-size: x-large;
+    font-size: large;
 }
 
 .dropdown-menu{
@@ -68,10 +81,14 @@ span{
     }
 }
 
-.dropleft .dropdown-toggle::before {
+.dropstart{
+    position: relative;
+}
+
+.dropstart .dropdown-toggle::before {
     transition: all .5s ease-in-out;
 }
 
-.dropleft.show .dropdown-toggle::before {
+.dropstart.show .dropdown-toggle::before {
     transform: rotate(180deg);
 }

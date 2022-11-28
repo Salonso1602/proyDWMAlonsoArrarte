@@ -18,12 +18,12 @@ export class BookablesListComponent implements OnInit {
     return Object.values(this.typesEnum);
   }
 
-  _selectedType: SearchEntitiesNames = this.typesEnum['Activity'];
-  get selectedType(): SearchEntitiesNames {
+  _selectedType?: SearchEntitiesNames ;
+  get selectedType(): SearchEntitiesNames | undefined {
     return this._selectedType;
   }
 
-  set selectedType(type: SearchEntitiesNames) {
+  set selectedType(type: SearchEntitiesNames | undefined) {
     this._selectedType = type;
     setTimeout(() => this.searchComponent.search());
   }
@@ -33,4 +33,9 @@ export class BookablesListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  radioChange(value : string){
+    if (value ===  'activity' || value === 'event' || value ===  'dish')
+    this._selectedType = value;
+  }
 }

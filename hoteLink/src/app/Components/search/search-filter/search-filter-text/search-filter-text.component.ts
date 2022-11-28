@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search-filter-text',
@@ -10,6 +11,7 @@ export class SearchFilterTextComponent implements OnInit, AfterViewInit {
   @ViewChild('searchInput') searchInputRef!: ElementRef;
 
   searchInput!: HTMLInputElement;
+  searchForm = new FormControl('')
   
   constructor() { }
 
@@ -17,10 +19,12 @@ export class SearchFilterTextComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.searchInput = this.searchInputRef.nativeElement;
   }
 
   updateSearchText() {
-    this.searchTextChanged.emit(this.searchInput.value);
+    const formVal = this.searchForm.getRawValue();
+    if(formVal){
+    this.searchTextChanged.emit(formVal);
+  }
   }
 }

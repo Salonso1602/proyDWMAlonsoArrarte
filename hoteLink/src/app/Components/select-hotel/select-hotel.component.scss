@@ -5,7 +5,21 @@
 }
 
 .container{
-    max-width: 800px;
+    max-width: 700px;
+    height: 80vh;
+    background-color: rgba(255, 255, 255, 0.63);
+    box-shadow: 0 .5rem 2rem rgba(black, .4);
+    padding: 1em;
+}
+
+.body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-image: url(https://viajerosocultos.com/wp-content/uploads/2020/12/positano-amalfi-coast-campania-italy-panoramic-view-on-old-town-at-sunny-day-scaled.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .card {
@@ -46,4 +60,11 @@ svg{
     vertical-align: text-top;
     width: 1em;
     height: 1em;
+}
+hr{
+    width: 97%;
+}
+p{
+    font-weight: bold;
+    font-size: x-large;
 }

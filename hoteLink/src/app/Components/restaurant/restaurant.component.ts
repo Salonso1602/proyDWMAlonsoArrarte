@@ -20,7 +20,6 @@ export class RestaurantComponent implements OnInit {
       if (dishFromNews) {
         this.restaurantService.addDishToCurrentOrder(dishFromNews);
       }
-      console.log(JSON.stringify(this.restaurantService.currentOrder));
     })
   }
 }

@@ -3,15 +3,16 @@
   <div class="row">
     <div class="col-md-12">
       Quiero buscar:
-      <select [(ngModel)]="selectedType">
-        <option *ngFor="let type of types" [ngValue]="type">
-          {{ type | bookableType }}
-        </option>
-      </select>
+      <div  class="btn-group" role="group">
+        <div *ngFor="let type of types">
+        <input type="radio" class="btn-check" name="radio" [id]="'radio'+type" (click)="radioChange(type)">
+        <label class="btn btn-primary" for="radio{{type}}">{{ type | bookableType }}</label>
+        </div>
+      </div>
     </div>
 
     <div class="col-md-12">
-      <app-search [entity]="selectedType"></app-search>
+      <app-search *ngIf="selectedType" [entity]="selectedType"></app-search>
     </div>
   </div>
 </div>
