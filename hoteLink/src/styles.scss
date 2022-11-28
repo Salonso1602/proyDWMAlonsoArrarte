@@ -54,6 +54,15 @@ h1 {
         border-color: var(--mainColorClear) !important;
         background-color: var(--inverseMainColor) !important; 
         }
+
+    &:active{
+        border-color: var(--mainColorClear);
+        background-color: var(--mainColorClear);
+    }
+    &:disabled{
+        border-color: var(--mainColorClear);
+        background-color: var(--mainColorClear);
+    }
     }
 app-root {
     display: flex;
