@@ -61,7 +61,7 @@ export class BookingCalendarComponent implements OnInit, AfterViewInit {
         daysAhead++
     ) {
       const timesInDay = this.times!
-        .filter(time => time.day === dayNumber)
+        .filter(time => time.dayOfWeek === dayNumber)
         .sort((a, b) => a.startTime.valueOf() - b.startTime.valueOf());
       
       if (timesInDay.length) {

@@ -10,7 +10,7 @@ export class InputComponent implements OnInit {
   @Input() control!: FormControl;
   @Input('id') inputId!: string;
   @Input() hasSuffix = false;
-  @Input() type: 'text' | 'number' | 'email' | 'password' = 'text'; 
+  @Input() type: 'text' | 'number' | 'email' | 'password' | 'date' = 'text';
 
   constructor() { }
 

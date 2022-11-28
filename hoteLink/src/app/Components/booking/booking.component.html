@@ -3,8 +3,18 @@
   <h2>{{ subject.name }}</h2>
   <div class="row">
     <div class="col-xl-5">
-      <p>Lugar: {{ subject.place }}</p>
-      <p>Cupos disponibles: {{ subject.booking.remaining }} / {{ subject.booking.total }}</p>
+      <app-input
+        [id]="'location'"
+        [control]="bookingForm!.controls['location']">
+          <i inputPrefix class="fa fa-map-marker-alt"></i>
+      </app-input>
+
+      <app-input
+        [id]="'availablePlaces'"
+        [control]="bookingForm!.controls['availablePlaces']">
+          <span label>Cupos disponibles:</span>
+          <i inputPrefix class="fa fa-users"></i>
+      </app-input>
     
       <app-event-booking-detail
         *ngIf="isEvent(subject)"
@@ -13,16 +23,20 @@
     
       <app-activity-booking-detail
         *ngIf="isActivity(subject)"
-        [activity]="subject">
+        [activity]="subject"
+        [priceControl]="bookingForm!.controls['price']">
       </app-activity-booking-detail>
     
-      <app-booking-form [requireUntilDate]="isActivity(subject)"></app-booking-form>
+      <app-booking-form
+        [formGroup]="bookingForm!.controls['booking']"
+        [requireUntilDate]="isActivity(subject)">
+      </app-booking-form>
     </div>
     <div class="col-xl-7">
       <app-booking-calendar
-      [date]="isEvent(subject) ? subject.date : undefined"
-      [times]="isActivity(subject) ? subject.timesOfActivity : undefined">
-    </app-booking-calendar>
+        [date]="isEvent(subject) ? subject.date : undefined"
+        [times]="isActivity(subject) ? subject.timesOfActivity : undefined">
+      </app-booking-calendar>
     </div>
   </div>
     
